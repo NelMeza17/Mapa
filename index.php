@@ -1,13 +1,7 @@
 <html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
-		<link rel="stylesheet" type="text/css" href="css/slider.css">
-		<link href='images/icono.png' rel='shortcut icon' type='image/png'/>
-		<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
-		<script type="text/javascript" src="js/slide.js"></script>
-		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <?php
-		include 'functions.php';
+		include 'load/functions.php';
+		require_once 'load/head.php';
 		$lat="19.72";
 		$lon="-101.20";
 		echo "<script type='text/javascript'>
@@ -68,8 +62,6 @@
 echo	"}		
 		</script>";
 ?>
-		<meta charset="UTF-8">
-		<title>Inicio</title>
 	</head>
 	<body onload="initialize()">
 			<div id="principal">	

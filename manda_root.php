@@ -1,5 +1,5 @@
 <?php
-	include 'functions.php';	
+	include 'load/functions.php';	
 	$link=Conecta();
 	$result=mysql_query("select * from user where usuario='".$_POST['log']."' and password='".$_POST['pwd']."'",$link);
 	//echo "Abuelito ahi vamos!!";

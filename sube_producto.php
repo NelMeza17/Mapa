@@ -1,15 +1,7 @@
 <?php
-	session_start();
-	if (isset($_SESSION['login']) && isset($_SESSION['pass'])) {
-		$link=mysql_connect("localhost","root","root");
-		if(!$link){
-			echo "Error al conectar con el servidor";
-			exit;
-		}
-		if(!mysql_select_db("desarrollo",$link)){
-			echo "Error al conectar con el servidor";
-			exit;
-		}
+	require_once "load/functions.php";
+	if (sesion()) {
+		$link= Conecta();
 		$boolean=1;
 		
 		$result=mysql_query("select producto from productos where coordenadas='".$_POST['coordenadas']."'",$link);
@@ -32,7 +24,6 @@
 		}
 	}
 	else {
-		echo "<center><h2>Acceso no permitido !!!</h2></center>";
-		header('refresh:2; url=index.php'); 
+		Redirecciona('index.php'); 
 	}
 ?>

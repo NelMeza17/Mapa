@@ -1,20 +1,13 @@
 <?php
-	include 'functions.php';
+	include 'load/functions.php';
 	if (sesion()) {
 		$link=Conecta();
 			$cor=str_replace("(","",$_GET['coordenadas']);
 			$cor=str_replace(")","",$cor);
 ?>
 <html>
-	<head>
-		<title>Ubica Tienda - Administrador</title>
-		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
-		<link rel="stylesheet" type="text/css" href="css/slider.css">
-		<link href='icono.png' rel='shortcut icon' type='image/png'/>
-		<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
-		<script type="text/javascript" src="js/slide.js"></script>
-		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <?php
+	require_once "load/head.php";
 		echo "
 		<script type='text/javascript'>
 		  var map;
@@ -41,8 +34,6 @@
 		}
 		</script>";
 ?>
-		<meta charset="UTF-8">
-		<title> Alta tienda - Administrador </title>
 	</head>
 	<body onload="initialize()">
 		<center>

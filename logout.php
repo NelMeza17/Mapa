@@ -1,5 +1,5 @@
 <?php
-	include 'functions.php';
+	include 'load/functions.php';
 	if(sesion()) {
 		session_destroy();
 		header("Location: index.php");
