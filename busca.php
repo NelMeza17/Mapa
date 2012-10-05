@@ -2,7 +2,6 @@
 <?php
 	include 'load/functions.php';
 	require_once "load/head.php";
-	echo "<script> alert('mamadas'); </script>";
 		$lat="19.72";
 		$lon="-101.20";
 		echo "<script type='text/javascript'>
@@ -10,7 +9,6 @@
 			var contentString;
 			var infowindow;
 			var marker;
-			alert('mamadas2');
 			function initialize() {
 				var latlng = new google.maps.LatLng(19.702222, -101.185556);
 				var myOptions = {
@@ -23,9 +21,7 @@
 				//----Aqui ponemos todas las tiendas .....
 						
 				map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
-				var arr=['$lat','19.702422','19.705222','19.722222','19.712222'];
-				var arr2=['$lon','-101.189856','-101.184556','-101.187556','-101.195556'];
-				var msj=['hola','como','estas','culeron','mal pedo']";
+				";
 				$link=Conecta();
 				$boolean=0;
 				$result=mysql_query("select * from productos where producto like '%".$_POST['buscar']."%'",$link);
@@ -38,6 +34,7 @@
 					while ($row1=mysql_fetch_object($result1)) {
 						$informacion=$informacion."<br />".$row1->producto;
 						$tienda=$row1->tienda;
+						$nombre_tienda = $row1->tienda;
 					}
 					$tienda="<b><h3>".$tienda."</h3></b><span style=color:red>Nuestros Productos:</span>";
 					$informacion="<div align=left>".$tienda.$informacion."</div>";
@@ -47,7 +44,7 @@
 							position: myLatlng, 
 							map: map, 
 							icon: image,
-							title:'".$row->nombre."'
+							title:'$nombre_tienda'
 						});
 						asignaVentana(marker, '".$informacion."');
 					";
@@ -95,7 +92,7 @@ echo	"}
 					</div>
 <?php
 					if($boolean==0){
-						echo "<script>alert('No existen tiendas con ese producto');</script>";
+						echo "<script>alert('No existen productos con ese criterio de busqueda');</script>";
 					}
 ?>
 					<br /><br /><br /><br /><br /><br /><br /><br />

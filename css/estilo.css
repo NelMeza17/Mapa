@@ -5,7 +5,6 @@ body{
 	width: 1200px;
 	height: 620px;
 	margin: auto; 
-	border: solid 1px;
 }
 #izquierda{
 	float:left;
@@ -20,13 +19,13 @@ body{
 	background: url('../images/banner.jpg') no-repeat center;
 }
 #mapa{
-	height:642px;
-	width:900px;
+	height:100%;
+	width:898px;
 	float:left;
 }
 #map_canvas{
 	height:100%;
-	width:900px;
+	width:898px;
 	float:left;
 }
 #log{
