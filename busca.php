@@ -9,18 +9,30 @@
 			var contentString;
 			var infowindow;
 			var marker;
-			function initialize() {
-				var latlng = new google.maps.LatLng(19.702222, -101.185556);
+			var mi_icono = 'images/yo.png';
+			var image = 'images/tienda.png';
+			
+			function init(){
+				navigator.geolocation.getCurrentPosition(function(position) {
+ 					var pos = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+ 					initialize(pos);
+ 				});
+ 			}
+ 			
+			function initialize(pos) {
 				var myOptions = {
 					zoom: 13,
-					center: latlng,
+					center: pos,
 					mapTypeId: google.maps.MapTypeId.ROADMAP
 				}
-				image = 'tienda.png'
 				
-				//----Aqui ponemos todas las tiendas .....
-						
 				map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+				var mi_localizacion = new google.maps.Marker({
+					position: pos,
+					map: map,
+					icon: mi_icono,
+					title: 'Yo'
+				});
 				";
 				$link=Conecta();
 				$boolean=0;
@@ -65,31 +77,12 @@ echo	"}
 		</script>";
 ?>
 	</head>
-	<body onload="initialize()">
+	<body onload="init()">
 		<center>
 			<div id="principal">	
 		  		<div id="izquierda">
 		  			<div id="izquierda_banner">
 		  			</div>
-		  			<div id="panel">
-						<form class="clearfix" action="manda_root.php" method="post">
-						<h1>Log In</h1>
-						<label id="user">Usuario:&nbsp&nbsp&nbsp </label>
-						<input type="text" name="log" id="log" /><br/>
-						<label id="pass">Password: </label>
-						<input class="field" type="password" name="pwd" id="pwd" /><br/>
-						<input type="submit" name="submit" id="submit" value="Log In" class="bt_login">
-						</form>						
-					</div>
-					<div class="tab">
-						<ul class="login">
-							<li >Hola Invitado!!!!!</li>
-							<li id="toggle">
-								<a id="open" class="open" >Log-In</a>
-								<a id="close" style="display: none;" class="close" >Close Panel</a>
-							</li>
-						</ul>
-					</div>
 <?php
 					if($boolean==0){
 						echo "<script>alert('No existen productos con ese criterio de busqueda');</script>";

@@ -9,21 +9,33 @@
 			var contentString;
 			var infowindow;
 			var marker;
-			function initialize() {
-				var latlng = new google.maps.LatLng(19.702222, -101.185556);
+			var mi_icono = 'images/yo.png';
+			var image = 'images/tienda.png';
+			
+			function init(){
+				navigator.geolocation.getCurrentPosition(function(position) {
+ 					var pos = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+ 					initialize(pos);
+ 				});
+ 			}
+ 			
+			function initialize(pos) {
 				var myOptions = {
 					zoom: 13,
-					center: latlng,
+					center: pos,
 					mapTypeId: google.maps.MapTypeId.ROADMAP
 				}
-				image = 'tienda.png'
+				
+				map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+				var mi_localizacion = new google.maps.Marker({
+					position: pos,
+					map: map,
+					icon: mi_icono,
+					title: 'Yo'
+				});
+				";
 				
 				//----Aqui ponemos todas las tiendas .....
-						
-				map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
-				var arr=['$lat','19.702422','19.705222','19.722222','19.712222'];
-				var arr2=['$lon','-101.189856','-101.184556','-101.187556','-101.195556'];
-				var msj=['hola','como','estas','culeron','mal pedo']";
 				$link=Conecta();
 				$result=mysql_query("select * from coordenadas",$link);
 				while($row=mysql_fetch_object($result)){
@@ -63,34 +75,13 @@ echo	"}
 		</script>";
 ?>
 	</head>
-	<body onload="initialize()">
+	<body onload="init()">
 			<div id="principal">	
 		  		<div id="izquierda">
 		  			<div id="izquierda_banner">
 		  			</div>
-		  			<div id="panel">
-		  				<center>
-							<form class="clearfix" action="manda_root.php" method="post">
-							<h1>Log In</h1>
-							<label id="user">Usuario:&nbsp&nbsp&nbsp </label>
-							<input type="text" name="log" id="log" /><br/>
-							<label id="pass">Password: </label>
-							<input class="field" type="password" name="pwd" id="pwd" /><br/>
-							<input type="submit" name="submit" id="submit" value="Log In" class="bt_login">
-							</form>
-						</center>						
-					</div>
-					<div class="tab">
-						<ul class="login">
-							<li >Hola Invitado!!!!!</li>
-							<li id="toggle">
-								<a id="open" class="open" >Log-In</a>
-								<a id="close" style="display: none;" class="close" >Close Panel</a>
-							</li>
-						</ul>
-					</div>
 					<br /><br /><br /><br /><br /><br /><br /><br />
-					<center><b style="color: #084B8A">Ingresa Producto a Buscar:</b></center>
+					<p class="fondo_letras">Ingresa Producto a Buscar:</p>
 					<br />
 					<center>
 					<form action='busca.php' method="post">

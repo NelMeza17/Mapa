@@ -67,3 +67,11 @@ a:hover{
 	color:red;
 	text-decoration: underline;
 }
+
+.fondo_letras {
+	color: white;
+	text-align: center;
+	width: 250;
+	margin: auto; 
+	background: #3B5997;
+}
