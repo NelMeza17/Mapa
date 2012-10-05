@@ -1,0 +1,70 @@
+body{
+	background-color: #F0F0F0;
+}
+#principal{
+	width: 1200px;
+	height: 620px;
+	margin: auto; 
+	border: solid 1px;
+}
+#izquierda{
+	float:left;
+	width: 300px;
+	height: 100%;
+	background: url('../images/brujula.jpg') no-repeat center;
+}
+#izquierda_banner{
+	float:left;
+	width: 300px;
+	height: 100px;
+	background: url('../images/banner.jpg') no-repeat center;
+}
+#mapa{
+	height:642px;
+	width:900px;
+	float:left;
+}
+#map_canvas{
+	height:100%;
+	width:900px;
+	float:left;
+}
+#log{
+	border-radius: 10px;
+	border-color: green;
+}
+#pwd{
+	border-radius: 10px;
+	border-color: blue;
+}
+#user{
+	color:red
+}
+#pass{
+	color: #FF8000;
+}
+.blancos{
+	color: #ffffff;
+}
+#principal_root{
+	width: 1325px;
+	height: 642px; 
+	border: solid 1px;
+}
+#izquierda_banner_root{
+	float:left;
+	width: 1325px;
+	height: 100px;
+	background-color: red;
+	background: url('../images/banner.jpg') no-repeat center;
+}
+
+a{
+	text-decoration: none;
+	color: white;
+}
+
+a:hover{
+	color:red;
+	text-decoration: underline;
+}
