@@ -2,6 +2,7 @@
 <?php
 	include 'load/functions.php';
 	require_once "load/head.php";
+	echo "<script> alert('mamadas'); </script>";
 		$lat="19.72";
 		$lon="-101.20";
 		echo "<script type='text/javascript'>
@@ -9,6 +10,7 @@
 			var contentString;
 			var infowindow;
 			var marker;
+			alert('mamadas2');
 			function initialize() {
 				var latlng = new google.maps.LatLng(19.702222, -101.185556);
 				var myOptions = {
