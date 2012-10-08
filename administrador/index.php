@@ -9,7 +9,7 @@
     </head>
     <body>
         <div id="content" class="login">
-            <h2 style="color: white; text-indent:35px"><img src="../images/locked.png" alt="" />Panel de Administrador</h2>
+            <h2 style="color: white"><img src="../images/locked.png" alt="" />Panel de Administrador</h2>
             <form action="login.php" method="POST">
                 <div class="input">
                     <input type="text" id="login" name='user' placeholder="Usuario"/>
@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="submit">
-                    <input type="submit" value="Ingresar"/>
+                    <input class="boton" type="submit" value="Ingresar"/>
                 </div>
             </form>     
         </div>   
