@@ -1,3 +1,7 @@
+:focus {
+	outline: 0;
+}
+
 body{
 	background-image: url('../images/bg.png');
 }
@@ -28,20 +32,7 @@ body{
 	width:898px;
 	float:left;
 }
-#log{
-	border-radius: 10px;
-	border-color: green;
-}
-#pwd{
-	border-radius: 10px;
-	border-color: blue;
-}
-#user{
-	color:red
-}
-#pass{
-	color: #FF8000;
-}
+
 .blancos{
 	color: #ffffff;
 }
@@ -74,4 +65,82 @@ a:hover{
 	width: 250;
 	margin: auto; 
 	background: #3B5997;
+}
+
+/*Estilos del la entrada para el login*/
+#content.login{
+	width: 350px;
+	margin: 90px auto 0;
+}
+#content.login .notif{
+	margin: 12px 0px 16px;
+}
+#content.login div.input{
+	height: 33px;
+	line-height: 33px;
+	margin-bottom: 13px;
+	position: relative;
+	/*+border-radius:3px;*/
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	border-radius: 3px 3px 3px 3px;
+	background-color: #1B1B1B;
+	background-color: rgba(0, 0, 0, 0.4);
+	border: 1px solid #0E0D0D;
+	border: 1px solid #303030;
+	/*+box-shadow:inset 2px 2px 5px rgba(0, 0, 0, 0.6);*/
+	-moz-box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.6);
+	-o-box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.6);
+	box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.6);
+	margin-top: 16px;
+}
+#content.login div.input input{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 329px;
+	height: 32px;
+	background: transparent;
+	border: none;
+	color: #6A6A6A;
+	padding: 0 10px;
+}
+#content.login div.input label{
+	position: absolute;
+	top: 0;
+	left: 10px;
+	height: 33px;
+	line-height: 33px;
+	color: #3A3636;
+}
+#content.login div.submit{
+	float: right;
+	width: 97px;
+	text-align: right;
+}
+#content.login .checkbox{
+	background: none !important;
+	/*+box-shadow:none;*/
+	-moz-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	-o-box-shadow: none !important;
+	box-shadow: none !important;
+	border: none !important;
+}
+#content.login div.checkbox{
+	float: left;
+	width: 229px;
+	margin-top: 3px;
+}
+#content.login div.checkbox label{
+	cursor: pointer;
+}
+#content.login div.submit input{
+	/*+box-shadow:0px 2px 5px #202020;*/
+	-moz-box-shadow: 0px 2px 5px #202020;
+	-webkit-box-shadow: 0px 2px 5px #202020;
+	-o-box-shadow: 0px 2px 5px #202020;
+	box-shadow: 0px 2px 5px #202020;
 }
