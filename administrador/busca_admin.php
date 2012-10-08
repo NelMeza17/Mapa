@@ -12,8 +12,8 @@
 			var contentString;
 			var infowindow;
 			var marker;
-			var mi_icono = 'images/yo.png';
-			var image = 'images/tienda.png';
+			var mi_icono = '../images/yo.png';
+			var image = '../images/tienda.png';
 			
 			function init(){
 				navigator.geolocation.getCurrentPosition(function(position) {
@@ -48,6 +48,7 @@
 						while ($row1=mysql_fetch_object($result1)) {
 							$informacion=$informacion."<br />".$row1->producto;
 							$tienda=$row1->tienda;
+							$nombre_tienda = $row1->tienda;
 						}
 						$tienda="<b><h3>".$tienda."</h3></b><span style=color:red>Nuestros Productos:</span>";
 						$informacion="<div align=left>".$tienda.$informacion."</div>";
@@ -57,7 +58,7 @@
 								position: myLatlng, 
 								map: map, 
 								icon: image,
-								title:'".$row->nombre."'
+								title:'$nombre_tienda'
 							});
 							asignaVentana(marker, '".$informacion."');
 						";
