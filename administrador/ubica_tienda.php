@@ -6,61 +6,70 @@
 	<?php
 		require_once "load/head.php";	 
 	?>
-		<script type="text/javascript">
-		  var map;
-		  function initialize() {
-			var latlng = new google.maps.LatLng(19.702222, -101.185556);
-			var myOptions = {
-			  zoom: 13,
-			  center: latlng,
-			  mapTypeId: google.maps.MapTypeId.ROADMAP
-			}
-			map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-			image = 'tienda.png';
-			google.maps.event.addListener(map, 'click', function(event){
-				
-				placeMarker(event.latLng);
-				//alert(event.latLng);
-				window.setTimeout('window.location="datos_tienda.php?coordenadas='+event.latLng+'"', 500);
-				
-			});
-		  }
-		  /*var contentString = '<div id="content">'+
-				'<div id="siteNotice">'+
-				'</div>'+
-				'<h3 id="firstHeading" class="firstHeading">Xolo</h3>'+
-				'<div id="bodyContent">'+
-				'<p><b>Xolo</b> Es un perro medio culerillo<b>!!</b></p>'+
-				'</div>'+
-				'</div>';
+    <script type="text/javascript">
+	var map = null;
+	var infoWindow = null;
+	
+	function openInfoWindow(marker) {
+		var markerLatLng = marker.getPosition();
+		$('#latitud').val(markerLatLng.lat());
+		$('#longitud').val(markerLatLng.lng());
+	}
 
-			var infowindow = new google.maps.InfoWindow({
-				content: contentString,
-				maxWidth: 100
-			});*/
-		
-		function placeMarker(location) {
-			var clickedLocation = new google.maps.LatLng(location);
-		//	alert('Las pinches cordenadas del punto'+location);
-			var marker = new google.maps.Marker({
-				position : location,
-				map : map,
-				icon : image
-			});
-		/*google.maps.event.addListener(marker, 'click', function() {
-  			infowindow.open(map,marker);
-		});*/
+	function init(){
+		navigator.geolocation.getCurrentPosition(function(position) {
+ 			var pos = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+ 			initialize(pos);
+ 		});
+ 	}
+
+	function initialize(pos) {
+		var myOptions = {
+		  zoom: 13,
+		  center: pos,
+		  mapTypeId: google.maps.MapTypeId.ROADMAP
 		}
-		</script>
+		
+		map = new google.maps.Map($("#map_canvas").get(0), myOptions);
+		
+		infoWindow = new google.maps.InfoWindow();
+		
+		var marker = new google.maps.Marker({
+		    position: pos,
+		    draggable: true,
+		    map: map,
+		    title:"Ejemplo marcador arrastrable"
+		});
+		
+		google.maps.event.addListener(marker, 'dragend', function(){
+			openInfoWindow(marker);
+		});
+	}
+
+  
+	$(document).ready(function() {
+	    initialize();
+	}); 
+
+</script>
 	</head>
-	<body onload="initialize()">
+	<body onload="init()">
 		<center>
 			<div id="principal">	
 		  		<div id="izquierda">
 		  			<a href="dentro.php"><div id="izquierda_banner"></div></a>
 		  				<br /><br /><br /><br /><br /><br />	
 		  				<p><b>Hola -- <?php echo "<span style='color: blue'>".$_SESSION['login']."</span>";?> / <a href="logout.php">Log-Out</a></b></p>
-		  				<h2>Da click en el mapa para ubicar una tienda</h2>
+		  				<h2>Ubica tu Tienda en el mapa</h2>
+		  				<fieldset style="border-color: #A9A9F5">
+			  				<legend>Datos tienda</legend>
+			  				<form id="formulario" action="sube_tienda.php" method="post">
+			  					<label>Nombre:</label><input type="text" name="nombre" required/><br /><br />
+			  					<label>Latitud:</label><input type="text" name="latitud" id="latitud" disabled="true" required/><br /><br />
+			  					<label>Latitud:</label><input type="text" name="longitud" id="longitud" disabled="true" required/><br /><br />
+			  					<input type="submit" name="enviar" value="Enviar" />
+			  				</form>
+		  				</fieldset>
 				</div>	
 				<div id="map_canvas"></div>	  		
 		  		
