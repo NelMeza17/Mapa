@@ -5,7 +5,7 @@ function Conecta(){
 		echo "Error al conectar con el servidor";
 		exit;
 	}
-	if(!mysql_select_db("desarrollo",$link)){
+	if(!mysql_select_db("locatienda",$link)){
 		echo "Error al conectar con el servidor";
 		exit;
 	}
@@ -24,5 +24,9 @@ function sesion(){
 function Redirecciona($direccion){
 	header("refresh:2; url='".$direccion."'"); 
     echo "<center><h2>Acceso no permitido !!!</h2></center>";	
+}
+
+function Redireccionauto($direccion){
+	header("Location: ".$direccion.""); 	
 }
 ?>

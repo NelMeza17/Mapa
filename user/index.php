@@ -1,15 +1,18 @@
+<?php
+	include '../load/functions.php';
+	if (sesion()) {
+?>
 <html>
 <?php
 		// incluye el head en el html y las llamadas a metodos.
-		include 'load/functions.php';
-		require_once 'load/head.php';
-		$imagen= "images/logos/";
+		require_once '../load/head.php';
+		$imagen= "../images/logos/";
 		echo "<script type='text/javascript'>
 			var map;
 			var contentString;
 			var infowindow;
 			var marker;
-			var mi_icono = 'images/yo.png';
+			var mi_icono = '../images/yo.png';
 			
 			function init(){
 				navigator.geolocation.getCurrentPosition(function(position) {
@@ -75,16 +78,21 @@ echo	"}
 		  			<div id="izquierda_banner">
 		  			</div>
 		  			<p class="fondo_login">
-		  				<a href="login.php">Iniciar Sesion</a>	
+		  				Hola -- <?php echo "<span style='color: blue'>".$_SESSION['login']."</span>";?> / <a href="../logout.php">Log-Out</a>	
 		  			</p>
-					<br /><br />
+		  			<br />
+					<div id="botones">
+						<a href="ubica_tienda.php"><button>Alta Tienda</button></a>
+						<a href="altaproducto.php"><button>Alta Producto</button></a>
+					</div>
 					<p class="fondo_letras">Ingresa Producto a Buscar:</p>
 					<br />
 					<center>
-					<form action='busca.php' method="post">
-						<input type="text" name="buscar" size="30" required />
-						<input type="submit" value="Buscar" />
-					</form>
+						<form action='busca.php' method="post">
+							<input type="text" name="buscar" size="30" required />
+							<input type="submit" value="Buscar" />
+						</form>
+					</center>
 					<div id="content_ajax">
 					</div>		  
 				</div>
@@ -93,3 +101,10 @@ echo	"}
 			</div>
 	</body>
 </html>
+
+<?php
+	}
+else {
+	
+}
+?>

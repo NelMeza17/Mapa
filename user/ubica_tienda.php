@@ -1,10 +1,10 @@
 <?php
-	include 'load/functions.php';
+	include '../load/functions.php';
 	if (sesion()) {
 ?>
 <html>
 	<?php
-		require_once "load/head.php";	 
+		require_once "../load/head.php";	 
 	?>
     <script type="text/javascript">
 	var map = null;
@@ -62,8 +62,8 @@
 			<div id="principal">	
 		  		<div id="izquierda">
 		  			<a href="dentro.php"><div id="izquierda_banner"></div></a>
-		  				<br /><br /><br /><br /><br /><br />	
-		  				<p><b>Hola -- <?php echo "<span style='color: blue'>".$_SESSION['login']."</span>";?> / <a href="logout.php">Log-Out</a></b></p>
+		  				<br /><br /><br />	
+		  				<p><b>Hola -- <?php echo "<span style='color: blue'>".$_SESSION['login']."</span>";?> / <a href="../logout.php">Log-Out</a></b></p>
 		  				<h2>Ubica tu Tienda en el mapa</h2>
 		  				<fieldset style="border-color: #A9A9F5; width: 260px;">
 			  				<legend>Datos tienda</legend>
@@ -71,8 +71,13 @@
 			  					<br />
 			  					<input name="file" type="file" id="file"><br /><br />
 			  					<label>Nombre:</label><input type="text" name="nombre" required/><br /><br />
+			  					<label>Calle:</label><input type="text" name="calle" required/><br /><br />
+			  					<label>Numero:</label><input type="text" name="numero" required/><br /><br />
+			  					<label>Colonia:</label><input type="text" name="Colonia" required/><br /><br />
+			  					<label>Telefono:</label><input type="text" name="telefono" /><br /><br />
 			  					<input type="hidden" name="latitud" id="latitud" required/>
 			  					<input type="hidden" name="longitud" id="longitud" required/>
+			  					<input type="hidden" name="iduser" value="<?=$_SESSION['iduser']?>"/>
 			  					<input type="submit" name="enviar" value="Enviar" />
 			  				</form>
 		  				</fieldset>
