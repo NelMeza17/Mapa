@@ -9,7 +9,14 @@
     </head>
     <body>
         <div id="content" class="login">
-            <h2 style="color: white"><img src="../images/locked.png" alt="" />Panel de Administrador</h2>
+        	<h2 style="color: white"><img src="../images/locked.png" alt="" />Panel de Administrador</h2>
+            <?php if (isset ($_GET['e'])){ ?>
+					<div class="notif error bloc">
+						<strong>Error :</strong> Usuario y/o Contraseña invalida
+						<a href="#" class="close"></a>
+					</div>
+			<?php } ?>
+            
             <form action="login.php" method="POST">
                 <div class="input">
                     <input type="text" id="login" name='user' placeholder="Usuario"/>

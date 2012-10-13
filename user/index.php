@@ -78,23 +78,23 @@ echo	"}
 		  			<div id="izquierda_banner">
 		  			</div>
 		  			<p class="fondo_login">
-		  				Hola -- <?php echo "<span style='color: blue'>".$_SESSION['login']."</span>";?> / <a href="../logout.php">Log-Out</a>	
+		  				<?php Retornauser();?> 	
 		  			</p>
 		  			<br />
 					<div id="botones">
-						<a href="ubica_tienda.php"><button>Alta Tienda</button></a>
-						<a href="altaproducto.php"><button>Alta Producto</button></a>
+						<a href="ubica_tienda.php"><button class="boton size100">Alta Tienda</button></a>
+						<a href="altaproducto.php"><button class="boton size100">Alta Producto</button></a>
 					</div>
-					<p class="fondo_letras">Ingresa Producto a Buscar:</p>
 					<br />
 					<center>
 						<form action='busca.php' method="post">
-							<input type="text" name="buscar" size="30" required />
-							<input type="submit" value="Buscar" />
+							<input class="search" type="text" name="buscar" size="30" placeholder="Ingresa tu busqueda" required />
+							<input class="boton size" type="submit" value="Buscar" />
 						</form>
 					</center>
 					<div id="content_ajax">
-					</div>		  
+					</div>
+					<p class="fondo_letras"><a href='comenta.php' class="comenta">Envianos tus comentarios</a></p>			  
 				</div>
 				<!-- En este div se carga el mapa -->	
 				<div id="map_canvas"></div>	  		
@@ -105,6 +105,6 @@ echo	"}
 <?php
 	}
 else {
-	
+	Redirecciona('../index.php');
 }
 ?>

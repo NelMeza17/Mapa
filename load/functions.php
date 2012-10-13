@@ -29,4 +29,8 @@ function Redirecciona($direccion){
 function Redireccionauto($direccion){
 	header("Location: ".$direccion.""); 	
 }
+
+function Retornauser(){
+	echo "<span style='color:white'>Hola: ".$_SESSION['login']."</span ><span style='color:white'> / </span> <a href='../logout.php'>Cerrar Sesion</a>";
+}
 ?>

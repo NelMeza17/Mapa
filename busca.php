@@ -77,16 +77,16 @@ echo	"}
 		  			<p class="fondo_login">
 		  				<a href="login.php">Iniciar Sesion</a>	
 		  			</p>
-					<br /><br /><br /><br /><br /><br /><br /><br />
-					<p class="fondo_letras">Ingresa Producto a Buscar:</p>
-					<br />
+					<br /><br />
 					<center>
 					<form action='busca.php' method="post">
-						<input type="text" name="buscar" size="30" required />
-						<input type="submit" value="Buscar" />
+						<input class="search" type="text" name="buscar" size="30" placeholder="Ingresa tu busqueda" required />
+						<input class="boton size" type="submit" value="Buscar" />
 					</form>
 					<div id="content_ajax">
-					</div>		  
+					</div>
+					<br />
+					<p class="fondo_letras"><a href="comenta.php" class="comenta">Envianos tu comentario</a></p>		  
 				</div>
 				<!-- En este div se carga el mapa -->	
 				<div id="map_canvas"></div>	  		

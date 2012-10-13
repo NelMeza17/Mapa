@@ -1,21 +1,15 @@
 <?php
-	include 'load/functions.php';	
+	include '../load/functions.php';	
 	$link=Conecta();
-	$result=mysql_query("select * from user where usuario='".$_POST['user']."' and password='".$_POST['password']."'",$link);
-	//echo "Abuelito ahi vamos!!";
+	$result=mysql_query("select * from user where user='".$_POST['user']."' and password='".$_POST['password']."'",$link);
 	if($row=mysql_fetch_object($result)){
 			session_start();
 			$_SESSION['login']=$_POST['user'];
 			$_SESSION['pass']=$_POST['password'];
 			$_SESSION['welcome']='1';
-			echo "<script type='text/javascript'> 
-				   	window.location='dentro.php'; 
-				  </script>";	
+			Redireccionauto("dentro.php");	
 	}
 	else{
-		echo "<script>window.alert('Datos de Administrador Incorrectos');</script>";
-		echo "<script type='text/javascript'> 
-			window.location='index.php'; 
-		</script>";
+		Redireccionauto("index.php?e=1");
 	}
 ?>

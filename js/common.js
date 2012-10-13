@@ -17,6 +17,10 @@ $(document).ready(function(){
 			beforeSend: function(){},
 			error: function(){},
 			success: function (data){
+				$('#content_ajax').css('background-color','#3B5997');
+				$('#content_ajax').css('border','1px solid');
+				$('#content_ajax').css('opacity','.9');
+				$('#content_ajax').css('border-radius','10px');
 				$('#content_ajax').html(data);
 			}
 		});
