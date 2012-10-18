@@ -5,17 +5,19 @@ if(sesion() && !empty($_POST['comentario'])){
 	$link=Conecta();
 	mysql_query("insert into comentarios values ('null','".$_SESSION['login']."','".$_POST['email']."','".$fecha."','".$_POST['comentario']."')");
 	//echo "insert into comentarios values ('null','".$_SESSION['login']."','".$_POST['email']."','".$fecha."','".$_POST['comentario']."')";
-	Redireccionauto('user/index.php');
+	Alerta('Comentario enviado exitosamente !!');
+	RedireccionJs(USER);
 }
 else if(!empty ($_POST['nombre'])){
 	$link=Conecta();
 	mysql_query("insert into comentarios values ('null','".$_POST['nombre']."','".$_POST['email']."','".$fecha."','".$_POST['comentario']."')");
-	Redireccionauto('index.php');
+	Alerta('Comentario enviado exitosamente !!');
+	RedireccionJS(SITE);
 }
 else{
 	if(sesion() && empty($_POST['comentario']))
-		Redireccionauto('user/index.php');
+		Redireccionauto(USER);
 	else
-		Redireccionauto('index.php');
+		Redireccionauto(SITE);
 }
 ?>

@@ -11,18 +11,29 @@
 	<body onload="init()">
 			<div id="principal">	
 		  		<div id="izquierda">
-		  			<div id="izquierda_banner">
-		  			</div>
+		  			<a title="Inicio" href="<?=USER?>"><div id="izquierda_banner"></div></a>
 		  			<p class="fondo_login">
 		  				<?php Retornauser();?> 	
 		  			</p>
-					<br /><br />
+					<br />
+					<div id="botones">
+						<a href="<?=USER?>"><button class="boton size100">Regresar</button></a>
+					</div>
+					<br />
 					<center>
 					<fieldset class="form">
 						<legend>Comentarios</legend>
 						<form action='../agrega_comentario.php' method="post">
 							<input type="text" name="nombre" value="<?=$_SESSION['login']?>" class="search" disabled/>
-							<input type="email" name="email" placeholder="Ingresa E-mail" class="search" required />
+						    <?php
+						    	$email;
+								$link = Conecta();
+						    	$result = mysql_query("select email from user where user = '".$_SESSION['login']."'",$link);
+								if($row=mysql_fetch_object($result))
+									$email = $row->email;
+						    ?>
+							<input type="email" name="email" value="<?=$email?>" class="search" disabled />
+							<input type="hidden" name="email" value="<?=$email?>"/>
 							<input type="text" name="fecha" class="search" value="<?=date("Y-m-d")?>" disabled  />
 							<textarea class="area" rows="15" cols="40" placeholder="Ingresa tu comentario" name="comentario" required ></textarea>
 							<br />

@@ -61,7 +61,7 @@
 		<center>
 			<div id="principal">	
 		  		<div id="izquierda">
-		  			<div id="izquierda_banner"></div>
+		  			<a title="Inicio" href="<?=USER?>"><div id="izquierda_banner"></div></a>
 		  				<p class="fondo_login">
 		  				<?php Retornauser();?> 	
 		  				</p>
@@ -70,7 +70,7 @@
 			  				<legend>Datos tienda</legend>
 			  				<br />
 			  				<form id="formulario" action="sube_tienda.php" method="post" enctype="multipart/form-data">
-			  					<input name="file" type="file" id="file"><br /><br />
+			  					<input name="file" type="file" id="file" required><br /><br />
 			  					<table>
 			  						<tr>
 			  							<td><label>Nombre:</label></td>
@@ -86,7 +86,7 @@
 			  						</tr>
 			  						<tr>
 			  							<td><label>Colonia:</label></td>
-			  							<td><input type="text" name="Colonia" class="search" required/></td>
+			  							<td><input type="text" name="colonia" class="search" required/></td>
 			  						</tr>
 			  						<tr>
 			  							<td><label>Telefono:</label></td>
@@ -102,10 +102,13 @@
 			  				<br />
 		  				</fieldset>
 		  				<br />
-		  				<p class="fondo_letras"><a href='comenta.php' class="comenta">Envianos tus comentarios</a></p>	
+		  				<p class="fondo_letras"><a href='comenta.php' class="comenta">Envianos tus comentarios</a></p>
+		  				<br />
+		  				<div id="botones">
+							<a href="<?=USER?>"><button class="boton size100">Regresar</button></a>
+						</div>	
 				</div>	
 				<div id="map_canvas"></div>	  		
-		  		
 			</div>
 		</center>
 	</body>
@@ -113,6 +116,6 @@
 <?php
 	}
 	else {
-		Redirecciona('../index.php'); 
+		Redirecciona(SITE); 
 	}
 ?>

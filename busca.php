@@ -72,12 +72,15 @@ echo	"}
 	<body onload="init()">
 			<div id="principal">	
 		  		<div id="izquierda">
-		  			<div id="izquierda_banner">
-		  			</div>
+		  			<a title="Inicio" href="<?=SITE?>"><div id="izquierda_banner"></div></a>
 		  			<p class="fondo_login">
 		  				<a href="login.php">Iniciar Sesion</a>	
 		  			</p>
-					<br /><br />
+					<br />
+					<div id="botones">
+						<a href="<?=SITE?>"><button class="boton size100">Regresar</button></a>
+					</div>
+					<br />
 					<center>
 					<form action='busca.php' method="post">
 						<input class="search" type="text" name="buscar" size="30" placeholder="Ingresa tu busqueda" required />

@@ -1,14 +1,15 @@
 <?php
-	include ('load/functions.php');
+	include ('../load/functions.php');
 	if(!sesion()){
 ?>
 <html>
     <?
-    include ('load/head.php');
+    include ('../load/head.php');
     ?>
     </head>
     <body>
         <div id="content" class="login">
+        	<center><a title="Inicio" href="<?=SITE?>"><div id="banner"></div></a></center>	
         	<h2 style="color: white"><img src="../images/locked.png" alt="" />Panel de Administrador</h2>
             <?php if (isset ($_GET['e'])){ ?>
 					<div class="notif error bloc">

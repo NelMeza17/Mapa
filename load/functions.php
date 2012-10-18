@@ -1,4 +1,18 @@
 <?php
+
+define('ROOT', 'http://localhost/Mapa/');
+
+define('LOAD', ROOT.'load/');
+define('HEAD', LOAD.'head.php');
+define('PRODUCTOS', LOAD.'consultaproductos.php');
+
+define ('SITE', 'http://localhost/Mapa/');
+define ('ADMINISTRADOR', SITE.'administrador/');
+define ('CSS', SITE.'css/');
+define ('JS', SITE.'js/');
+define ('IMAGES', SITE.'images/');
+define ('USER', SITE.'user/');
+	
 function Conecta(){
 	$link=mysql_connect("localhost","root","root");
 	if(!$link){
@@ -28,6 +42,18 @@ function Redirecciona($direccion){
 
 function Redireccionauto($direccion){
 	header("Location: ".$direccion.""); 	
+}
+
+function RedireccionJs($direccionjs){
+	echo "<script>
+			window.location='".$direccionjs."';
+		  </script>";
+}
+
+function Alerta($mensaje){
+	echo "<script>
+			window.alert('".$mensaje."');
+		</script>";
 }
 
 function Retornauser(){

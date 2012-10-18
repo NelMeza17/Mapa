@@ -75,15 +75,14 @@ echo	"}
 	<body onload="init()">
 			<div id="principal">	
 		  		<div id="izquierda">
-		  			<div id="izquierda_banner">
-		  			</div>
+		  			<a title="Inicio" href="<?=USER?>"><div id="izquierda_banner"></div></a>
 		  			<p class="fondo_login">
 		  				<?php Retornauser();?> 	
 		  			</p>
 		  			<br />
 					<div id="botones">
 						<a href="ubica_tienda.php"><button class="boton size100">Alta Tienda</button></a>
-						<a href="altaproducto.php"><button class="boton size100">Alta Producto</button></a>
+						<a href="maneja_tienda.php"><button class="boton size120">Manejar Tiendas</button></a>
 					</div>
 					<br />
 					<center>
@@ -92,8 +91,7 @@ echo	"}
 							<input class="boton size" type="submit" value="Buscar" />
 						</form>
 					</center>
-					<div id="content_ajax">
-					</div>
+					<div id="content_ajax"></div>
 					<p class="fondo_letras"><a href='comenta.php' class="comenta">Envianos tus comentarios</a></p>			  
 				</div>
 				<!-- En este div se carga el mapa -->	
@@ -105,6 +103,6 @@ echo	"}
 <?php
 	}
 else {
-	Redirecciona('../index.php');
+	Redirecciona(SITE);
 }
 ?>

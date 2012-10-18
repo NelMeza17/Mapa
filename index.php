@@ -72,8 +72,7 @@ echo	"}
 	<body onload="init()">
 			<div id="principal">	
 		  		<div id="izquierda">
-		  			<div id="izquierda_banner">
-		  			</div>
+		  			<a title="Inicio" href="<?=SITE?>"><div id="izquierda_banner"></div></a>
 		  			<p class="fondo_login">
 		  				<a href="login.php">Iniciar Sesion</a>	
 		  			</p>

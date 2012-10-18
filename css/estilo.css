@@ -3,14 +3,9 @@
 	padding: 0px;
 	border: 0px;
 }
-
-:focus {
-	outline: 0;
-}
-
-body{
-	background-image: url('../images/bg.png');
-}
+:focus { outline: 0; }
+body{ background-image: url('../images/bg.png'); }
+body.wood{ background-image: url('../images/wood-bg.jpg'); }
 #principal{
 	width: 1200px;
 	height: 620px;
@@ -29,6 +24,12 @@ body{
 	height: 100px;
 	background: url('../images/banner.jpg') no-repeat center;
 }
+#banner{
+	width: 300px;
+	height: 100px;
+	background: url('../images/banner.jpg') no-repeat center;
+	border-radius: 10px;
+}
 #mapa{
 	height:100%;
 	width:898px;
@@ -39,10 +40,7 @@ body{
 	width:898px;
 	float:left;
 }
-
-.blancos{
-	color: #ffffff;
-}
+.blancos{ color: #ffffff; }
 #principal_root{
 	width: 1325px;
 	height: 642px; 
@@ -54,6 +52,12 @@ body{
 	height: 100px;
 	background-color: red;
 	background: url('../images/banner.jpg') no-repeat center;
+}
+#table_tienda{
+	width: 870px;
+	height: 130px;
+	margin: auto;
+	overflow: auto;
 }
 
 a {
@@ -90,6 +94,9 @@ a:hover{
 .popup {
 	font-size: 11px;
 	height: auto;
+}
+.icons{
+	cursor: pointer;
 }
 
 /*Estilos del la entrada para el login*/
@@ -169,15 +176,26 @@ a:hover{
 	-o-box-shadow: 0px 2px 5px #202020;
 	box-shadow: 0px 2px 5px #202020;
 }
+#file {width: 250px;}
 
-#file {
-	width: 250px;	
-}
-
+/* Contenedores que se cargan con ajax */
 #content_ajax {
+	width: 90%;
+	height: 340px;
+	text-align: left;
+	margin: auto;
+	overflow: auto;
+}
+#admin_ajax {
 	width: 90%;
 	height: 360px;
 	text-align: left;
+	margin: auto;
+	overflow: auto;
+}
+#productos_ajax{
+	width: 70%;
+	height: 300px;
 	margin: auto;
 	overflow: auto;
 }
@@ -205,6 +223,7 @@ a:hover{
 
 #content.login .notif{
 	margin: 12px 0px 16px;
+	font-size: 12px;
 }
 #content .notif.error{
 	background-color: #FBB4B4;
@@ -212,9 +231,14 @@ a:hover{
 	border: 1px solid #C21C1C !important;
 	color: #C21C1C;
 }
-#content .bloc .input{
-	padding: 5px 0 10px;
+#content .notif.tip{
+	background-color: #F2EDB7;
+	background-image: url(../images/tip.png);
+	border: 1px solid #8C8919 !important;
+	color: #656310;
 }
+.link_notif{ font-size: 12px; }
+#content .bloc .input{ padding: 5px 0 10px; }
 #content .notif .close{
 	position: absolute;
 	top: 10px;
@@ -224,10 +248,7 @@ a:hover{
 	display: block;
 	background: url(../images/close.png);
 }
-
-#botones{
-	text-align:center;
-}
+#botones{text-align:center;}
 
 /*Estilo formulario*/
 fieldset.form{
@@ -253,13 +274,9 @@ fieldset.form{
 	border-radius: 4px;
 }
 
-input.boton:hover{
-	background-color: #3580a9;
-}
+input.boton:hover{ background-color: #3580a9; }
 
-.boton:hover{
-	background-color: #3580a9;
-}
+.boton:hover{ background-color: #3580a9; }
 
 input.search{
 	width: 200px;
@@ -267,6 +284,13 @@ input.search{
 	border: 2px solid #3B5997;
 	border-radius: 5px;
 	text-indent: 5px;
+}
+
+select.tienda{
+	width: 200px;
+	height: 30px;
+	border: 2px solid #3B5997;
+	border-radius: 5px;
 }
 
 .size{
@@ -283,6 +307,10 @@ input.search{
 }
 .size100{
 	width: 100px;
+	background: #3B5997; 
+}
+.size120{
+	width: 120px;
 	background: #3B5997; 
 }
 
@@ -303,19 +331,15 @@ a.comenta{
 	font-size: 12px;
 	color: white;	
 }
-a.comenta:hover{
-	color: red;
-}
-textarea{
-	resize:none;
-}
+a.comenta:hover{ color: red; }
+textarea{ resize:none; }
 
 /* Tabla comentarios */
 .tabla {
 font-family: Verdana, Arial, Helvetica, sans-serif;
 font-size:12px;
 text-align: left;
-width: 860px;
+width: 850px;
 }
 .tabla th {
 padding: 5px;
@@ -400,4 +424,8 @@ border-right-style: solid;
 border-bottom-style: solid;
 border-right-color: #EBE9BC;
 border-bottom-color: #EBE9BC;
+}
+
+.clear{
+	clear: both;
 }

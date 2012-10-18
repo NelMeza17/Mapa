@@ -8,14 +8,21 @@
     ?>
     </head>
     <body>
+    	
         <div id="content" class="login">
-            <h2 style="color: white"><img src="images/locked.png" alt="" />Panel de Administrador</h2>
+        	<center><a title="Inicio" href="<?=SITE?>"><div id="banner"></div></a></center>	
+            <h2 style="color: white"><img src="images/locked.png" alt="" />Panel de Usuario</h2>
             <?php if (isset ($_GET['e'])){ ?>
 					<div class="notif error bloc">
 						<strong>Error :</strong> Usuario y/o Contraseña invalida
 						<a href="#" class="close"></a>
 					</div>
 			<?php } ?>
+			<div class="notif tip bloc">
+                	<strong>Hola :</strong> Aun no eres miembro de Locatienda? haz click
+                	<a href="new_user.php" class="link_notif">Aqui</a>
+                	<a href="#" class="close"></a>
+            </div>
             <form action="login1.php" method="POST">
                 <div class="input">
                     <input type="text" id="login" name='user' placeholder="Usuario"/>
@@ -28,13 +35,14 @@
                 <div class="submit">
                     <input class="boton" type="submit" value="Ingresar"/>
                 </div>
-            </form>     
-        </div>   
+            </form>
+            
+        </div>        
     </body>
 </html>
 <?php
 	}
 	else {
-		Redireccionauto("user/index.php");
+		Redireccionauto(USER);
 	}
 ?>
