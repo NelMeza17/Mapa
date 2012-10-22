@@ -15,6 +15,7 @@
 			var mi_icono = '../images/yo.png';
 			
 			function init(){
+				localizame();
 				navigator.geolocation.getCurrentPosition(function(position) {
  					var pos = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
  					initialize(pos);

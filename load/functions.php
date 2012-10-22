@@ -30,9 +30,11 @@ function sesion(){
 	@session_start();
 	$sesion=false;
 	$link = Conecta();
-	$result = mysql_query("select * from user where user='".$_SESSION['user']."' and password='".$_SESSION['password']."'", $link);		
-	if ($row = mysql_fetch_object($result)) {
-		$sesion=true;
+	if (isset ($_SESSION['user']) && isset ($_SESSION['password'])){
+		$result = mysql_query("select * from user where user='".$_SESSION['user']."' and password='".$_SESSION['password']."'", $link);		
+		if ($row = mysql_fetch_object($result)) {
+			$sesion=true;
+		}	
 	}
 	return $sesion;
 }
@@ -59,6 +61,6 @@ function Alerta($mensaje){
 }
 
 function Retornauser(){
-	echo "<span style='color:white'>Hola: ".$_SESSION['login']."</span ><span style='color:white'> / </span> <a href='../logout.php'>Cerrar Sesion</a>";
+	echo "<span style='color:white'>Hola: ".$_SESSION['user']."</span ><span style='color:white'> / </span> <a href='../logout.php'>Cerrar Sesion</a>";
 }
 ?>

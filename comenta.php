@@ -5,7 +5,7 @@
 		require_once 'load/head.php';
 ?>
 	</head>
-	<body onload="init()">
+	<body>
 			<div id="principal">	
 		  		<div id="izquierda">
 		  			<a title="Inicio" href="<?=SITE?>"><div id="izquierda_banner"></div></a>
