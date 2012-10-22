@@ -1,5 +1,36 @@
+function coordenadas(){
+
+}
+
+function localizame() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(coordenadas, errores);
+    }else{
+        alert('Oops! Tu navegador no soporta geolocalización. Bájate Chrome, que es gratis!');
+        map_canvas.style.backgroundImage="url('http://localhost/Mapa/images/error_explorer.jpg')";
+        map_canvas.style.height = "659px";
+        map_canvas.style.width = "895px";
+    }
+}
+
+function errores(err) {
+    if (err.code == 0) {
+      alert("Oops! Algo ha salido mal");
+    }
+    if (err.code == 1) {
+      alert("Oops! No has aceptado compartir tu posición");
+    }
+    if (err.code == 2) {
+      alert("Oops! No se puede obtener la posición actual");
+    }
+    if (err.code == 3) {
+      alert("Oops! Hemos superado el tiempo de espera");
+    }
+}
+
 $(document).ready(function(){
 	var ruta = "http://localhost/Mapa/";
+	
 	$('#content').on('click', 'a.close', function(e){
 		e.preventDefault();
 		$(this).parent().fadeTo(500, 0).slideUp();

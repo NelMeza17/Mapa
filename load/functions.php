@@ -28,8 +28,10 @@ function Conecta(){
 
 function sesion(){
 	@session_start();
-	$sesion=false;		
-	if (isset($_SESSION['login']) && isset($_SESSION['pass'])) {
+	$sesion=false;
+	$link = Conecta();
+	$result = mysql_query("select * from user where user='".$_SESSION['user']."' and password='".$_SESSION['password']."'", $link);		
+	if ($row = mysql_fetch_object($result)) {
 		$sesion=true;
 	}
 	return $sesion;

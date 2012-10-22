@@ -8,7 +8,7 @@ body{ background-image: url('../images/bg.png'); }
 body.wood{ background-image: url('../images/wood-bg.jpg'); }
 #principal{
 	width: 1200px;
-	height: 620px;
+	height: 650px;
 	margin: auto; 
 }
 #izquierda{
@@ -181,7 +181,7 @@ a:hover{
 /* Contenedores que se cargan con ajax */
 #content_ajax {
 	width: 90%;
-	height: 340px;
+	height: 370px;
 	text-align: left;
 	margin: auto;
 	overflow: auto;
