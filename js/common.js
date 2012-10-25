@@ -58,7 +58,7 @@ $(document).ready(function(){
 	});
 	
 	
-	$('.tabla').on('click', 'td.eliminar_tienda', function(){
+	$('#table_tienda').on('click', 'td.eliminar_tienda', function(){
 		if(window.confirm('Esta seguro que desea eliminar esta tienda?\n'+
 		'Tome en cuenta que al eliminar una tienda '+
 		'desapareceran todos su productos')){
@@ -116,7 +116,33 @@ $(document).ready(function(){
 				$('#productos_ajax').css('border-radius','10px');
 				$('#productos_ajax').html(data);
 			}
-		});	
+		});	
+	});
+	
+	$('#comentarios').on('click', '#add_producto', function(e){
+		e.preventDefault();		
+		$.ajax({
+			type: 'post',
+			dataType: 'html',
+			url: ruta+'load/add_productos.php',
+			data: {'id':$(this).attr("rel")},
+			beforeSend: function(){},
+			error: function(){},
+			success: function (data){
+				$('#content_ajax').css('background-color','#3B5997');
+				$('#content_ajax').css('border','1px solid');
+			    $('#content_ajax').css('opacity','.9');
+				$('#content_ajax').css('border-radius','10px');
+				$('#content_ajax').html(data);
+			}
+		});	
+	});
+	
+	$('#content_ajax').on('click', '#close_ajax', function(){
+		//$(this).parent().fadeTo(500, 0).slideUp();
+		$(this).parent().css('background','none');
+		$('#content_ajax').css('border','none');
+		$(this).parent().html("");
 	});
 	
 });

@@ -199,7 +199,13 @@ a:hover{
 	margin: auto;
 	overflow: auto;
 }
-
+#close_ajax{
+	width: 12px;
+	height: 13px;
+	background: url(../images/eliminar.png) 0px 7px no-repeat;
+	padding: 5px;
+	cursor: pointer;
+}
 
 /* Estilos del mensaje de error */
 #content .notif{
@@ -428,4 +434,7 @@ border-bottom-color: #EBE9BC;
 
 .clear{
 	clear: both;
+}
+.right{
+	float: right;
 }

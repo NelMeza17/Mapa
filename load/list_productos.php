@@ -2,7 +2,7 @@
 require_once 'functions.php';
 if(sesion()){
 	$link = Conecta();	echo "<br />";
-	echo "<strong style='color: white'>Haga click en la imagen para agregar mas productos</strong> <img title='Agregar' class='icons' src='".IMAGES."add.png' />";
+	echo "<strong style='color: white'>Haga click en la imagen para agregar mas productos</strong> <img rel='".$_POST['id']."' id='add_producto'  title='Agregar' class='icons' src='".IMAGES."add.png' />";
 	echo "<br /><br />";
 	$result = mysql_query("SELECT * FROM productos WHERE idtienda= '".$_POST['id']."' ");
 	echo "
