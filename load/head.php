@@ -11,6 +11,7 @@
       src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCfNxWtSRLIfHhmur8iGHqyV7osTETywRg&sensor=true">
     </script>
     <script type="text/javascript" src="<?=$ruta?>js/jquery.js"></script>
+    <script type="text/javascript" src="<?=$ruta?>js/jquery.form.js"></script>
     <script type="text/javascript" src="<?=$ruta?>js/jquery-ui.min.js"></script>
     <script type="text/javascript"	src="<?=$ruta?>js/common.js"></script>    
     <script type="text/javascript" src="<?=$ruta?>js/tooltipsy.min.js"></script>

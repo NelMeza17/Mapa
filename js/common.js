@@ -139,10 +139,39 @@ $(document).ready(function(){
 	});
 	
 	$('#content_ajax').on('click', '#close_ajax', function(){
-		//$(this).parent().fadeTo(500, 0).slideUp();
 		$(this).parent().css('background','none');
 		$('#content_ajax').css('border','none');
 		$(this).parent().html("");
 	});
 	
+	$('#comentarios').on('click', '#close_ajax', function(){
+		$('#productos_ajax').css('background','none');
+		$('#productos_ajax').css('border','none');
+		$('#productos_ajax').html("");
+	});
+	
+	//definimos las opciones del plugin AJAX FORM
+    //asignamos el plugin ajaxForm al formulario myForm y le pasamos las opciones
+    $('#izquierda').on('click','#btn_add_producto',function(){
+		var opciones= {
+	       beforeSubmit: mostrarLoader, //funcion que se ejecuta antes de enviar el form
+	       error: mostrarError,
+	       success: mostrarRespuesta, //funcion que se ejecuta una vez enviado el formulario
+	    };
+		$('#form_add_producto').ajaxForm(opciones);
+    });
+     //lugar donde defino las funciones que utilizo dentro de "opciones"
+     function mostrarLoader(){
+     	$("#loader_gif").fadeIn("slow");
+     };
+     function mostrarError(){
+     	alert('Error inesperado');
+     }
+     function mostrarRespuesta (responseText){
+		$("#loader_gif").fadeOut("slow");
+		alert(responseText);
+		$('#content_ajax').css('background','none');
+		$('#content_ajax').css('border','none');
+		$('#content_ajax').html("");
+     };
 });
