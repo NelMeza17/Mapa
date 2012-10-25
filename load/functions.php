@@ -12,6 +12,7 @@ define ('CSS', SITE.'css/');
 define ('JS', SITE.'js/');
 define ('IMAGES', SITE.'images/');
 define ('USER', SITE.'user/');
+define ('LOGOS', IMAGES.'logos/');
 	
 function Conecta(){
 	$link=mysql_connect("localhost","root","root");

@@ -16,8 +16,10 @@
 				<br />
 				<div id="botones">
 					<a href="<?=USER?>"><button class="boton size100">Regresar</button></a>
-				</div> 
-				<div id="admin_ajax"></div>
+				</div>
+				<br /><br /> 
+				<div id="content_ajax"></div>
+				<br /><br />
 				<p class="fondo_letras"><a href='comenta.php' class="comenta">Envianos tus comentarios</a></p> 
 			</div>
 			<!-- En este div se carga el mapa -->	
@@ -37,15 +39,17 @@
 							<?php 
 								$link=Conecta();
 								$result=mysql_query("select * from tienda where iduser='".$_SESSION['iduser']."'", $link);
+								$tienda=0;
 								while($row=mysql_fetch_object($result)){
-								 echo "<tr class='modo1'>
+								 echo "<tr class='modo1' id='$tienda'>
 											<td style='width:25%'>".$row->nombre."</td>
 											<td style='width:25%'>".$row->calle." #".$row->numero."</td>
 											<td style='width:15%'>".$row->colonia."</td>
 											<td style='width:15%'>".$row->telefono."</td>
-											<td class='editar' title='Haz click para editar' style='width:10%; cursor:pointer;' rel='".$row->idtienda."'><center><img src='".IMAGES."editar.png'/></center></td>
-											<td class='eliminar' title='Haz click para eliminar' style='width:10%; cursor:pointer;' rel='".$row->idtienda."'><center><img src='".IMAGES."eliminar.png'/></center></td>
+											<td class='editar_tienda' title='Haz click para editar' style='width:10%; cursor:pointer;' rel='".$row->idtienda."'><center><img src='".IMAGES."editar.png'/></center></td>
+											<td class='eliminar_tienda' title='Haz click para eliminar' style='width:10%; cursor:pointer;' rel='".$row->idtienda."'><center><img src='".IMAGES."eliminar.png'/></center></td>
 										</tr>";			
+								$tienda++;
 								}
 							?>
 						</table>

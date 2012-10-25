@@ -58,20 +58,44 @@ $(document).ready(function(){
 	});
 	
 	
-	$('.tabla').on('click', 'td.eliminar', function(){
-		if(window.confirm('Esta seguro que desea eliminar esta tienda?'))
-		{
-			
-			window.alert('El id de la tienda ' + $(this).attr("rel"));
+	$('.tabla').on('click', 'td.eliminar_tienda', function(){
+		if(window.confirm('Esta seguro que desea eliminar esta tienda?\n'+
+		'Tome en cuenta que al eliminar una tienda '+
+		'desapareceran todos su productos')){
+			$.ajax({
+				type: 'post',
+				dataType: 'html',
+				url: ruta+'load/elimina_tienda.php',
+				data: {'id':$(this).attr("rel")},
+				beforeSend: function(){},
+				error: function(){},
+				success: function (data){
+					window.location=ruta+'user/maneja_tienda.php';
+					window.alert(data);
+				}
+			});
 		}		
 	});
 	
 	
-	$('#table_tienda').on('click', 'td.editar', function(){
+	$('#table_tienda').on('click', 'td.editar_tienda', function(){
 		if(window.confirm('Esta seguro que desea editar esta tienda?'))
 		{
-			
-			window.alert('El id de la tienda ' + $(this).attr("rel"));
+			$.ajax({
+				type: 'post',
+				dataType: 'html',
+				url: ruta+'load/edita_tienda.php',
+				data: {'id':$(this).attr("rel")},
+				beforeSend: function(){},
+				error: function(){},
+				success: function (data){
+					$('#content_ajax').css('background-color','#3B5997');
+					$('#content_ajax').css('border','1px solid');
+					$('#content_ajax').css('opacity','.9');
+					$('#content_ajax').css('border-radius','10px');
+					$('#content_ajax').html(data);	
+				}
+			});
 		}		
 	});
 
