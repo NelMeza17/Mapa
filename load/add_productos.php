@@ -20,7 +20,7 @@ if(sesion()){
 		</table>
 		<br />
 		<input type='hidden' name='id' value='<?=$_POST['id']?>' />
-		<input type="submit" name="enviar" value="Agregar" class="boton " />
+		<input  type="submit" name="enviar" value="Agregar" class="boton " />
 	</form>
 	<br />
 	</center>
