@@ -1,10 +1,16 @@
-<?php	
-require_once 'functions.php';
+<?php
+include ('functions.php');
 if(sesion()){
-	$link = Conecta();	echo "<div id='close_ajax' class='right' title='Cerrar'></div><br />";
-	echo "<strong style='color: white'>Haga click en la imagen para agregar mas productos</strong> <img rel='".$_POST['id']."' id='add_producto'  title='Agregar' class='icons' src='".IMAGES."add.png' />";
+	$link = Conecta();
+	$tienda= mysql_query("select idtienda from productos where idproductos='".$_POST['id']."'" , $link);
+	$idtienda;
+	if($row = mysql_fetch_object($tienda))
+		$idtienda = $row->idtienda;
+	mysql_query("delete from productos where idproductos='".$_POST['id']."'",$link);
+	echo "<div id='close_ajax' class='right' title='Cerrar'></div><br />";
+	echo "<strong style='color: white'>Haga click en la imagen para agregar mas productos</strong> <img rel='".$idtienda."' id='add_producto'  title='Agregar' class='icons' src='".IMAGES."add.png' />";
 	echo "<br /><br />";
-	$result = mysql_query("SELECT * FROM productos WHERE idtienda= '".$_POST['id']."' ");
+	$result = mysql_query("SELECT * FROM productos WHERE idtienda= '".$idtienda."' ");
 	echo "
 		<center>
 		<table border='0' cellpadding='0' cellspacing='0' class='tabla' style='width:90%'>
@@ -25,7 +31,7 @@ if(sesion()){
 		$tienda++;
 	}
 	echo "</table>
-		</center>";
+		</center>";
 }
 else{
 	Redirecciona(SITE);

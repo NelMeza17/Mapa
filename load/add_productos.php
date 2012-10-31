@@ -19,7 +19,7 @@ if(sesion()){
 			</tr>
 		</table>
 		<br />
-		<input id='idtienda' type='hidden' name='id' value='<?=$_POST['id']?>' />
+		<input id='idtienda' type='hidden' name='idtienda' value='<?=$_POST['id']?>' />
 		<div id="ajax_loader"><img id="loader_gif" src="<?=IMAGES?>loader.gif" style=" display:none;"/></div>
 		<br />
 		<input id='btn_add_producto'  type="submit" name="enviar" value="Agregar" class="boton " />

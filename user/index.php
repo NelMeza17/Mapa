@@ -93,6 +93,7 @@ echo	"}
 						</form>
 					</center>
 					<div id="content_ajax"></div>
+					<br />
 					<p class="fondo_letras"><a href='comenta.php' class="comenta">Envianos tus comentarios</a></p>			  
 				</div>
 				<!-- En este div se carga el mapa -->	
