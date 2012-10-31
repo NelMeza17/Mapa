@@ -29,39 +29,47 @@ function errores(err) {
 }
 
 $(document).ready(function(){
+	
 	var ruta = "http://localhost/Mapa/";
+	
+	function execute_ajax(url, datos, contenedor){
+		$.ajax({
+			type: 'post',
+			dataType: 'html',
+			url: url,
+			data: {'id': datos},
+			beforeSend: function(){},
+			error: function(){},
+			success: function (data){
+				$(contenedor).css('background-color','#3B5997');
+				$(contenedor).css('border','1px solid');
+			    $(contenedor).css('opacity','.9');
+				$(contenedor).css('border-radius','10px');
+				$(contenedor).html(data);
+			}
+		});	
+	}
 	
 	$('#content').on('click', 'a.close', function(e){
 		e.preventDefault();
 		$(this).parent().fadeTo(500, 0).slideUp();
 	});
 	
-	
 	$('#map_canvas').on('click', 'a', function(e){
 		e.preventDefault();
-		
-		$.ajax({
-			type: 'post',
-			dataType: 'html',
-			url: ruta+'load/consultaproductos.php',
-			data: {'id':$(this).attr("rel")},
-			beforeSend: function(){},
-			error: function(){},
-			success: function (data){
-				$('#content_ajax').css('background-color','#3B5997');
-				$('#content_ajax').css('border','1px solid');
-				$('#content_ajax').css('opacity','.9');
-				$('#content_ajax').css('border-radius','10px');
-				$('#content_ajax').html(data);
-			}
-		});	
+		url = ruta+'load/consultaproductos.php';
+		datos = $(this).attr("rel");
+		contenedor = '#content_ajax';
+		execute_ajax(url, datos, contenedor);
 	});
-	
 	
 	$('#table_tienda').on('click', 'td.eliminar_tienda', function(){
 		if(window.confirm('Esta seguro que desea eliminar esta tienda?\n'+
 		'Tome en cuenta que al eliminar una tienda '+
 		'desapareceran todos su productos')){
+			// url = ruta+'load/elimina_tienda.php';
+			// datos = $(this).attr("rel");
+			// contenedor			$(this).parent().fadeTo(500, 0).slideUp();
 			$.ajax({
 				type: 'post',
 				dataType: 'html',
@@ -70,72 +78,59 @@ $(document).ready(function(){
 				beforeSend: function(){},
 				error: function(){},
 				success: function (data){
-					window.location=ruta+'user/maneja_tienda.php';
 					window.alert(data);
 				}
 			});
 		}		
 	});
 	
-	
 	$('#table_tienda').on('click', 'td.editar_tienda', function(){
 		if(window.confirm('Esta seguro que desea editar esta tienda?'))
 		{
-			$.ajax({
-				type: 'post',
-				dataType: 'html',
-				url: ruta+'load/edita_tienda.php',
-				data: {'id':$(this).attr("rel")},
-				beforeSend: function(){},
-				error: function(){},
-				success: function (data){
-					$('#content_ajax').css('background-color','#3B5997');
-					$('#content_ajax').css('border','1px solid');
-					$('#content_ajax').css('opacity','.9');
-					$('#content_ajax').css('border-radius','10px');
-					$('#content_ajax').html(data);	
-				}
-			});
+			url = ruta+'load/edita_tienda.php';
+			datos = $(this).attr("rel");
+			contenedor = '#content_ajax';
+			execute_ajax(url, datos, contenedor);
 		}		
 	});
 
-
 	$('#comentarios').on('change', 'select', function(e){
-		e.preventDefault();		
-		$.ajax({
-			type: 'post',
-			dataType: 'html',
-			url: ruta+'load/list_productos.php',
-			data: {'id':$(this).val()},
-			beforeSend: function(){},
-			error: function(){},
-			success: function (data){
-				$('#productos_ajax').css('background-color','#3B5997');
-				$('#productos_ajax').css('border','1px solid');
-			    $('#productos_ajax').css('opacity','.9');
-				$('#productos_ajax').css('border-radius','10px');
-				$('#productos_ajax').html(data);
-			}
-		});	
+		e.preventDefault();
+		url = ruta+'load/list_productos.php';
+		datos = $(this).val();
+		contenedor = '#productos_ajax';
+		execute_ajax(url, datos, contenedor);		
 	});
 	
 	$('#comentarios').on('click', '#add_producto', function(e){
-		e.preventDefault();		
-		$.ajax({
-			type: 'post',
-			dataType: 'html',
-			url: ruta+'load/add_productos.php',
-			data: {'id':$(this).attr("rel")},
-			beforeSend: function(){},
-			error: function(){},
-			success: function (data){
-				$('#content_ajax').css('background-color','#3B5997');
-				$('#content_ajax').css('border','1px solid');
-			    $('#content_ajax').css('opacity','.9');
-				$('#content_ajax').css('border-radius','10px');
-				$('#content_ajax').html(data);
-			}
-		});	
+		e.preventDefault();	
+		url = ruta+'load/add_productos.php';
+		id = $(this).attr("rel");
+		contenedor = '#content_ajax';	
+		execute_ajax(url, id, contenedor);
+	});
+	
+	$('#comentarios').on('click', 'td.editar_producto', function(e){
+		if(window.confirm('Esta seguro que desea editar este producto?'))
+		{	
+			e.preventDefault();	
+			url = ruta+'load/edit_productos.php';
+			id = $(this).attr("rel");
+			contenedor = '#content_ajax';	
+			execute_ajax(url, id, contenedor);
+		}
+	});
+	
+	$('#comentarios').on('click', 'td.eliminar_producto', function(e){
+		if(window.confirm('Esta seguro que desea eliminar este producto?'))
+		{	
+			e.preventDefault();	
+			url = ruta+'load/delete_producto.php';
+			id = $(this).attr("rel");
+			contenedor = '#productos_ajax';	
+			execute_ajax(url, id, contenedor);
+			window.alert('Producto eliminado con exito!!');
+		}
 	});
 	
 	$('#content_ajax').on('click', '#close_ajax', function(){
@@ -154,13 +149,13 @@ $(document).ready(function(){
     //asignamos el plugin ajaxForm al formulario myForm y le pasamos las opciones
     $('#izquierda').on('click','#btn_add_producto',function(){
 		var opciones= {
+		   clearForm: true,
 	       beforeSubmit: mostrarLoader, //funcion que se ejecuta antes de enviar el form
 	       error: mostrarError,
 	       success: mostrarRespuesta, //funcion que se ejecuta una vez enviado el formulario
 	    };
 		$('#form_add_producto').ajaxForm(opciones);
     });
-     //lugar donde defino las funciones que utilizo dentro de "opciones"
      function mostrarLoader(){
      	$("#loader_gif").fadeIn("slow");
      };
@@ -169,9 +164,13 @@ $(document).ready(function(){
      }
      function mostrarRespuesta (responseText){
 		$("#loader_gif").fadeOut("slow");
-		alert(responseText);
-		$('#content_ajax').css('background','none');
-		$('#content_ajax').css('border','none');
-		$('#content_ajax').html("");
+		id = responseText;
+		window.alert('Producto agregado con exito!!');
+		// $('#content_ajax').css('background','none');
+		// $('#content_ajax').css('border','none');
+		// $('#content_ajax').html("");
+		url = ruta+'load/list_productos.php';
+		contenedor = '#productos_ajax';
+		execute_ajax(url,id, contenedor);
      };
 });
