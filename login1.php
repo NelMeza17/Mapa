@@ -8,6 +8,7 @@
 			$_SESSION['password']=$_POST['password'];
 			$_SESSION['iduser']=$row->iduser;
 			$_SESSION['welcome']='1';
+			$_SESSION['root']='0';
 			Redireccionauto("user/index.php");
 	}
 	else{

@@ -3,7 +3,7 @@ include 'load/functions.php';
 $fecha=date("Y-m-d");
 if(sesion() && !empty($_POST['comentario'])){
 	$link=Conecta();
-	mysql_query("insert into comentarios values ('null','".$_SESSION['login']."','".$_POST['email']."','".$fecha."','".$_POST['comentario']."')");
+	mysql_query("insert into comentarios values ('null','".$_SESSION['user']."','".$_POST['email']."','".$fecha."','".$_POST['comentario']."')");
 	//echo "insert into comentarios values ('null','".$_SESSION['login']."','".$_POST['email']."','".$fecha."','".$_POST['comentario']."')";
 	Alerta('Comentario enviado exitosamente !!');
 	RedireccionJs(USER);

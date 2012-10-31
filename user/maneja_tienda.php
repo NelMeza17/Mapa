@@ -40,16 +40,25 @@
 								$link=Conecta();
 								$result=mysql_query("select * from tienda where iduser='".$_SESSION['iduser']."'", $link);
 								$tienda=0;
-								while($row=mysql_fetch_object($result)){
-								 echo "<tr class='modo1' id='$tienda'>
-											<td style='width:25%'>".$row->nombre."</td>
-											<td style='width:25%'>".$row->calle." #".$row->numero."</td>
-											<td style='width:15%'>".$row->colonia."</td>
-											<td style='width:15%'>".$row->telefono."</td>
-											<td class='editar_tienda' title='Haz click para editar' style='width:10%; cursor:pointer;' rel='".$row->idtienda."'><center><img src='".IMAGES."editar.png'/></center></td>
-											<td class='eliminar_tienda' title='Haz click para eliminar' style='width:10%; cursor:pointer;' rel='".$row->idtienda."'><center><img src='".IMAGES."eliminar.png'/></center></td>
-										</tr>";			
-								$tienda++;
+								if($count=mysql_num_rows($result)>0){
+									while($row=mysql_fetch_object($result)){
+									 echo "<tr class='modo1' id='$tienda'>
+												<td style='width:25%'>".$row->nombre."</td>
+												<td style='width:25%'>".$row->calle." #".$row->numero."</td>
+												<td style='width:15%'>".$row->colonia."</td>
+												<td style='width:15%'>".$row->telefono."</td>
+												<td class='editar_tienda' title='Haz click para editar' style='width:10%; cursor:pointer;' rel='".$row->idtienda."'><center><img src='".IMAGES."editar.png'/></center></td>
+												<td class='eliminar_tienda' title='Haz click para eliminar' style='width:10%; cursor:pointer;' rel='".$row->idtienda."'><center><img src='".IMAGES."eliminar.png'/></center></td>
+											</tr>";			
+									$tienda++;
+									}
+								}
+								else{
+									echo"
+									<tr class='modo1'>
+										<td colspan=6><center><h1>No hay Tiendas para mostrar</h1></center></td>
+									</tr>
+									";
 								}
 							?>
 						</table>

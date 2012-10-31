@@ -24,11 +24,11 @@
 					<fieldset class="form">
 						<legend>Comentarios</legend>
 						<form action='../agrega_comentario.php' method="post">
-							<input type="text" name="nombre" value="<?=$_SESSION['login']?>" class="search" disabled/>
+							<input type="text" name="nombre" value="<?=$_SESSION['user']?>" class="search" disabled/>
 						    <?php
 						    	$email;
 								$link = Conecta();
-						    	$result = mysql_query("select email from user where user = '".$_SESSION['login']."'",$link);
+						    	$result = mysql_query("select email from user where user = '".$_SESSION['user']."'",$link);
 								if($row=mysql_fetch_object($result))
 									$email = $row->email;
 						    ?>
@@ -57,13 +57,22 @@
 							<?php 
 								$link=Conecta();
 								$result=mysql_query("select * from comentarios", $link);
-								while($row=mysql_fetch_object($result)){
-								 echo "<tr class='modo1'>
-											<td>".$row->nombre."</td>
-											<td>".$row->email."</td>
-											<td>".$row->fecha."</td>
-											<td style='width:500px'>".$row->comentario."</td>
-										</tr>";			
+								if($count= mysql_num_rows($result)>0){
+									while($row=mysql_fetch_object($result)){
+									 echo "<tr class='modo1'>
+												<td>".$row->nombre."</td>
+												<td>".$row->email."</td>
+												<td>".$row->fecha."</td>
+												<td style='width:500px'>".$row->comentario."</td>
+											</tr>";			
+									}
+								}
+								else{
+									echo"
+									<tr class='modo1'>
+										<td colspan=5><center><h1>No hay comentarios para mostrar</h1></center></td>
+									</tr>
+									";
 								}
 							?>
 						</table>

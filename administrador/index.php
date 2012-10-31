@@ -1,6 +1,6 @@
 <?php
 	include ('../load/functions.php');
-	if(!sesion()){
+	if(!sesion_root()){
 ?>
 <html>
     <?

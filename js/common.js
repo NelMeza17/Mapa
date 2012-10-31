@@ -172,5 +172,79 @@ $(document).ready(function(){
 		url = ruta+'load/list_productos.php';
 		contenedor = '#productos_ajax';
 		execute_ajax(url,id, contenedor);
-     };
+     };
+     
+     $('#comentarios').on('click', 'td.eliminar_comentario', function(){
+		if(window.confirm('Esta seguro que desea eliminar este Comentario?')){
+			$(this).parent().fadeTo(500, 0).slideUp();
+			$.ajax({
+				type: 'post',
+				dataType: 'html',
+				url: ruta+'load/elimina_comentario.php',
+				data: {'id':$(this).attr("rel")},
+				beforeSend: function(){},
+				error: function(){},
+				success: function (data){
+					window.alert(data);
+				}
+			});
+		}		
+	});
+	
+	$('#comentarios').on('click', 'td.eliminar_tienda_admin', function(){
+		if(window.confirm('Esta seguro que desea eliminar esta tienda?\n'+
+		'Tome en cuenta que al eliminar una tienda '+
+		'desapareceran todos su productos')){
+			$(this).parent().fadeTo(500, 0).slideUp();
+			$.ajax({
+				type: 'post',
+				dataType: 'html',
+				url: ruta+'load/elimina_tienda.php',
+				data: {'id':$(this).attr("rel")},
+				beforeSend: function(){},
+				error: function(){},
+				success: function (data){
+					window.alert(data);
+				}
+			});
+		}		
+	});
+	
+	$('#comentarios').on('click', 'td.eliminar_user_admin', function(){
+		if(window.confirm('Esta seguro que desea eliminar este Usuario?\n'+
+		'Tome en cuenta que al eliminar todas sus tiendas y '+
+		'desapareceran todos su productos')){
+			$(this).parent().fadeTo(500, 0).slideUp();
+			$.ajax({
+				type: 'post',
+				dataType: 'html',
+				url: ruta+'load/elimina_usuario.php',
+				data: {'id':$(this).attr("rel")},
+				beforeSend: function(){},
+				error: function(){},
+				success: function (data){
+					window.alert(data);
+				}
+			});
+		}		
+	});
+	
+	
+	$('#comentarios').on('click', 'td.eliminar_producto_admin', function(){
+		if(window.confirm('Esta seguro que desea eliminar este Producto?\n')){
+			$(this).parent().fadeTo(500, 0).slideUp();
+			$.ajax({
+				type: 'post',
+				dataType: 'html',
+				url: ruta+'load/delete_producto.php',
+				data: {'id':$(this).attr("rel")},
+				beforeSend: function(){},
+				error: function(){},
+				success: function (data){
+					window.alert(data);
+				}
+			});
+		}		
+	});
 });
+

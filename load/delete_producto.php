@@ -33,6 +33,11 @@ if(sesion()){
 	echo "</table>
 		</center>";
 }
+else if (sesion_root()){
+	$link = Conecta();
+	mysql_query("delete from productos where idproductos='".$_POST['id']."'",$link);
+	echo "Producto Eliminado con Exito";
+}
 else{
 	Redirecciona(SITE);
 }

@@ -343,6 +343,11 @@ select.tienda{
 	background: #3B5997; 
 }
 
+.size140{
+	width: 140px;
+	background: #3B5997; 
+}
+
 label{
 	color: white;
 	font-weight: bold;

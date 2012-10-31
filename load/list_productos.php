@@ -15,14 +15,23 @@ if(sesion()){
 				<th>Eliminar</th>
 			</tr>";
 	$tienda=0;
-	while ($row=mysql_fetch_object($result)) {
-		echo "<tr class='modo1'>
-				<td>".$row->nombre."</td>
-				<td>".$row->precio."</td>
-				<td class='editar_producto icons' title='Haz click para editar' style='width:10%;' rel='".$row->idproductos."'><center><img src='".IMAGES."editar.png'/></center></td>
-			    <td class='eliminar_producto icons' title='Haz click para eliminar' style='width:10%;' rel='".$row->idproductos."'><center><img src='".IMAGES."eliminar.png'/></center></td>
-			</tr>";
-		$tienda++;
+	if ($count=mysql_num_rows($result)>0){
+		while ($row=mysql_fetch_object($result)) {
+			echo "<tr class='modo1'>
+					<td>".$row->nombre."</td>
+					<td>".$row->precio."</td>
+					<td class='editar_producto icons' title='Haz click para editar' style='width:10%;' rel='".$row->idproductos."'><center><img src='".IMAGES."editar.png'/></center></td>
+				    <td class='eliminar_producto icons' title='Haz click para eliminar' style='width:10%;' rel='".$row->idproductos."'><center><img src='".IMAGES."eliminar.png'/></center></td>
+				</tr>";
+			$tienda++;
+		}
+	}
+	else{
+		echo"
+			<tr class='modo1'>
+				<td colspan=4><center><h1>No hay Productos para mostrar</h1></center></td>
+			</tr>
+		";
 	}
 	echo "</table>
 		</center>";
