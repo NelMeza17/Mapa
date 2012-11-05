@@ -39,17 +39,17 @@
 				$link=Conecta();
 				$result=mysql_query("select * from tienda",$link);
 				while($row=mysql_fetch_object($result)){
-					$icon = $imagen.$row->imagen;
-					$coordenadas = $row->latitud.", ".$row->longitud;
+					$icon = $imagen.base64_decode($row->imagen);
+					$coordenadas = base64_decode($row->latitud).", ".base64_decode($row->longitud);
 					$id = $row->idtienda;
-					$infoventana="<div aling=left class=popup><img src=$icon><b><h3>".$row->nombre."</h3></b><span style=color:blue>Direccion: ".$row->calle." ".$row->numero."<br /> Colonia: ".$row->colonia."</span><br /><br /><a href=# rel=$id >Ver Productos</a></div>";
+					$infoventana="<div aling=left class=popup><img src=$icon><b><h3>".base64_decode($row->nombre)."</h3></b><span style=color:blue>Direccion: ".base64_decode($row->calle)." ".base64_decode($row->numero)."<br /> Colonia: ".base64_decode($row->colonia)."</span><br /><br /><a href=# rel=$id >Ver Productos</a></div>";
 					echo "
 						var myLatlng = new google.maps.LatLng(".$coordenadas.");
 					    marker = new google.maps.Marker({
 							position: myLatlng, 
 							map: map, 
 							icon: '".$icon."',
-							title:'".$row->nombre."'
+							title:'".base64_decode($row->nombre)."'
 						});
 						asignaVentana(marker, '".$infoventana."');
 					";

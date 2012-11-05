@@ -28,9 +28,9 @@
 						    <?php
 						    	$email;
 								$link = Conecta();
-						    	$result = mysql_query("select email from user where user = '".$_SESSION['user']."'",$link);
+						    	$result = mysql_query("select email from user where user = '".base64_encode($_SESSION['user'])."'",$link);
 								if($row=mysql_fetch_object($result))
-									$email = $row->email;
+									$email = base64_decode($row->email);
 						    ?>
 							<input type="email" name="email" value="<?=$email?>" class="search" disabled />
 							<input type="hidden" name="email" value="<?=$email?>"/>
@@ -60,10 +60,10 @@
 								if($count= mysql_num_rows($result)>0){
 									while($row=mysql_fetch_object($result)){
 									 echo "<tr class='modo1'>
-												<td>".$row->nombre."</td>
-												<td>".$row->email."</td>
+												<td>".base64_decode($row->nombre)."</td>
+												<td>".base64_decode($row->email)."</td>
 												<td>".$row->fecha."</td>
-												<td style='width:500px'>".$row->comentario."</td>
+												<td style='width:500px'>".base64_decode($row->comentario)."</td>
 											</tr>";			
 									}
 								}

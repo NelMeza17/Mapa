@@ -1,15 +1,18 @@
+<?php
+	include '../load/functions.php';
+	if (sesion_root()) {
+?>
 <html>
 <?php
 		// incluye el head en el html y las llamadas a metodos.
-		include 'load/functions.php';
-		require_once 'load/head.php';
-		$imagen= "images/logos/";
+		require_once '../load/head.php';
+		$imagen= "../images/logos/";
 		echo "<script type='text/javascript'>
 			var map;
 			var contentString;
 			var infowindow;
 			var marker;
-			var mi_icono = 'images/yo.png';
+			var mi_icono = '../images/yo.png';
 			
 			function init(){
 				localizame();
@@ -73,13 +76,13 @@ echo	"}
 	<body onload="init()">
 			<div id="principal">	
 		  		<div id="izquierda">
-		  			<a title="Inicio" href="<?=SITE?>"><div id="izquierda_banner"></div></a>
+		  			<a title="Inicio" href="<?=ADMINISTRADOR?>"><div id="izquierda_banner"></div></a>
 		  			<p class="fondo_login">
-		  				<a href="login.php">Iniciar Sesion</a>	
+		  				<?php Retornauser();?>
 		  			</p>
 					<br />
 					<div id="botones">
-						<a href="<?=SITE?>"><button class="boton size100">Regresar</button></a>
+						<a href="<?=ADMINISTRADOR?>"><button class="boton size100">Regresar</button></a>
 					</div>
 					<br />
 					<center>
@@ -88,12 +91,16 @@ echo	"}
 						<input class="boton size" type="submit" value="Buscar" />
 					</form>
 					<div id="content_ajax">
-					</div>
-					<br />
-					<p class="fondo_letras"><a href="comenta.php" class="comenta">Envianos tu comentario</a></p>		  
+					</div>		  
 				</div>
 				<!-- En este div se carga el mapa -->	
 				<div id="map_canvas"></div>	  		
 			</div>
 	</body>
 </html>
+<?php
+}
+else {
+	Redirecciona(SITE);
+}
+?>

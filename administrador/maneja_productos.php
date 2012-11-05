@@ -38,10 +38,10 @@
 								if($count=mysql_num_rows($result)>0){
 									while($row=mysql_fetch_object($result)){
 									 echo "<tr class='modo1'>
-												<td style='width:30%'>".$row->tienda."</td>
-												<td style='width:20%'>".$row->usuario."</td>
-												<td style='width:30%'>".$row->nombre."</td>
-												<td style='width:10%'>".$row->precio."</td>
+												<td style='width:30%'>".base64_decode($row->tienda)."</td>
+												<td style='width:20%'>".base64_decode($row->usuario)."</td>
+												<td style='width:30%'>".base64_decode($row->nombre)."</td>
+												<td style='width:10%'>".base64_decode($row->precio)."</td>
 												<td class='eliminar_producto_admin' title='Haz click para eliminar' style='width:10%; cursor:pointer;' rel='".$row->idproductos."'><center><img src='".IMAGES."eliminar.png'/></center></td>
 											</tr>";			
 									}

@@ -39,6 +39,6 @@
 <?php
 	}
 	else {
-		Redireccionauto("user/index.php");
+		Redireccionauto(USER);
 	}
 ?>

@@ -39,10 +39,10 @@
 								if($count=mysql_num_rows($result)>0){
 									while($row=mysql_fetch_object($result)){
 									 echo "<tr class='modo1' id='$tienda'>
-												<td style='width:25%'>".$row->nombre."</td>
-												<td style='width:25%'>".$row->calle." #".$row->numero."</td>
-												<td style='width:15%'>".$row->colonia."</td>
-												<td style='width:15%'>".$row->telefono."</td>
+												<td style='width:25%'>".base64_decode($row->nombre)."</td>
+												<td style='width:25%'>".base64_decode($row->calle)." #".base64_decode($row->numero)."</td>
+												<td style='width:15%'>".base64_decode($row->colonia)."</td>
+												<td style='width:15%'>".base64_decode($row->telefono)."</td>
 												<td class='eliminar_tienda_admin' title='Haz click para eliminar' style='width:10%; cursor:pointer;' rel='".$row->idtienda."'><center><img src='".IMAGES."eliminar.png'/></center></td>
 											</tr>";			
 									$tienda++;
