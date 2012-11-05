@@ -13,15 +13,15 @@
             <h2 style="color: white"><img src="<?=IMAGES?>locked.png" alt="" />Cambiar Contraseña</h2>
             <form action="../load/change_pass.php" method="POST" id='form_change_pass'>
                 <div class="input">
-                    <input type="password" id="pass_old" name='password_old' placeholder=" Ingresa Contraseña Anterior" required/>
+                    <input type="password" id="pass_old" name='password_old' placeholder=" Ingresa Contraseña Anterior" required="required"/>
                 </div>
                 
                 <div class="input">
-                    <input type="password" id="pass_new" name="password_new" placeholder=" Ingresa Nueva Contraseña" required/>
+                    <input type="password" id="pass_new" name="password_new" placeholder=" Ingresa Nueva Contraseña" required="required"/>
                 </div>
 				
 				<div class="input">
-                    <input type="password" id="pass_nw_conf" name='password_conf' placeholder="Confirmar Nueva Contraseña" required/>
+                    <input type="password" id="pass_nw_conf" name='password_conf' placeholder="Confirmar Nueva Contraseña" required="required"/>
                 </div>
                 <center><div id="ajax_loader"><img id="loader_gif" src="<?=IMAGES?>ajax-loader.gif" style='display: none;'/></div></center>
                 <div class="submit">

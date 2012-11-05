@@ -78,27 +78,27 @@
 			  					<table>
 			  						<tr>
 			  							<td><label>Nombre:</label></td>
-			  							<td><input type="text" name="nombre" class="search" required/></td>
+			  							<td><input type="text" name="nombre" class="search" required="required"/></td>
 			  						</tr>
 			  						<tr>
 			  							<td><label>Calle:</label></td>
-			  							<td><input type="text" name="calle" class="search" required/></td>
+			  							<td><input type="text" name="calle" class="search" required="required"/></td>
 			  						</tr>
 			  						<tr>
 			  							<td><label>Numero:</label></td>
-			  							<td><input type="text" name="numero" class="search" required/></td>
+			  							<td><input type="text" name="numero" class="search" required="required"/></td>
 			  						</tr>
 			  						<tr>
 			  							<td><label>Colonia:</label></td>
-			  							<td><input type="text" name="colonia" class="search" required/></td>
+			  							<td><input type="text" name="colonia" class="search" required="required"/></td>
 			  						</tr>
 			  						<tr>
 			  							<td><label>Telefono:</label></td>
 			  							<td><input type="text" name="telefono" class="search" /></td>
 			  						</tr>
 			  					</table>
-			  					<input type="hidden" name="latitud" id="latitud" required/>
-			  					<input type="hidden" name="longitud" id="longitud" required/>
+			  					<input type="hidden" name="latitud" id="latitud" required="required"/>
+			  					<input type="hidden" name="longitud" id="longitud" required="required"/>
 			  					<input type="hidden" name="iduser" value="<?=$_SESSION['iduser']?>"/>
 			  					<br />
 			  					<input type="submit" name="enviar" value="Enviar" class="boton " />

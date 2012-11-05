@@ -18,19 +18,19 @@ if(sesion()){
 		<table>
 			<tr>
 				<td><label>Nombre:</label></td>
-				<td><input type="text" name="nombre" value='<?=base64_decode($row->nombre)?>' class="search" required/></td>
+				<td><input type="text" name="nombre" value='<?=base64_decode($row->nombre)?>' class="search" required="required"/></td>
 			</tr>
 			<tr>
 				<td><label>Calle:</label></td>
-				<td><input type="text" name="calle" value='<?=base64_decode($row->calle)?>' class="search" required/></td>
+				<td><input type="text" name="calle" value='<?=base64_decode($row->calle)?>' class="search" required="required"/></td>
 			</tr>
 			<tr>
 				<td><label>Numero:</label></td>
-				<td><input type="text" name="numero" value='<?=base64_decode($row->numero)?>' class="search" required/></td>
+				<td><input type="text" name="numero" value='<?=base64_decode($row->numero)?>' class="search" required="required"/></td>
 			</tr>
 			<tr>
 				<td><label>Colonia:</label></td>
-				<td><input type="text" name="colonia" value='<?=base64_decode($row->colonia)?>' class="search" required/></td>
+				<td><input type="text" name="colonia" value='<?=base64_decode($row->colonia)?>' class="search" required="required"/></td>
 			</tr>
 			<tr>
 				<td><label>Telefono:</label></td>

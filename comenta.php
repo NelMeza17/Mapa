@@ -21,10 +21,10 @@
 					<fieldset class="form">
 						<legend>Comentarios</legend>
 						<form action='agrega_comentario.php' method="post">
-							<input type="text" name="nombre" placeholder="Ingresa Nombre" class="search" required />
-							<input type="email" name="email" placeholder="Ingresa E-mail" class="search" required />
+							<input type="text" name="nombre" placeholder="Ingresa Nombre" class="search" required="required" />
+							<input type="email" name="email" placeholder="Ingresa E-mail" class="search" required="required" />
 							<input type="text" name="fecha" class="search" value="<?=date("Y-m-d")?>" disabled  />
-							<textarea class="area" rows="15" cols="40" placeholder="Ingresa tu comentario" name="comentario" required ></textarea>
+							<textarea class="area" rows="15" cols="40" placeholder="Ingresa tu comentario" name="comentario" required="required" ></textarea>
 							<br />
 							<input type="submit" value="Enviar" class="boton" />
 						</form>

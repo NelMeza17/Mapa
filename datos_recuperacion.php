@@ -14,7 +14,7 @@
             <h2 style="color: white"><img src="images/locked.png" alt="" />Recuperar Contraseña</h2>
             <form action="load/recupera_pass.php" method="POST" id='recupera_pass'>
                 <div class="input">
-                    <input type="mail" id="mail" name='mail' placeholder="Ingresa E-mail" required/>
+                    <input type="mail" id="mail" name='mail' placeholder="Ingresa E-mail" required="required"/>
                 </div>
                 <center><div id="ajax_loader"><img id="loader_gif" src="<?=IMAGES?>ajax-loader.gif" style='display: none;'/></div></center>
                 <div class="submit">        	

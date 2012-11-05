@@ -17,11 +17,11 @@ if(sesion()){
 		<table>
 			<tr>
 				<td><label>Nombre:</label></td>
-				<td><input id='producto' type="text" value='<?=base64_decode($row->nombre)?>' name="producto" class="search" required/></td>
+				<td><input id='producto' type="text" value='<?=base64_decode($row->nombre)?>' name="producto" class="search" required="required"/></td>
 			</tr>
 			<tr>
 				<td><label>Precio:</label></td>
-				<td><input id='precio' type="number" value='<?=base64_decode($row->precio)?>' name="precio"  class="search" min='1' required/></td>
+				<td><input id='precio' type="number" value='<?=base64_decode($row->precio)?>' name="precio"  class="search" min='1' required="required"/></td>
 			</tr>
 		</table>
 		<br />

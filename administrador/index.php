@@ -20,11 +20,11 @@
             
             <form action="login.php" method="POST">
                 <div class="input">
-                    <input type="text" id="login" name='user' placeholder="Usuario"/>
+                    <input type="text" id="login" name='user' placeholder="Usuario" required="required"/>
                 </div>
                 
                 <div class="input">
-                    <input type="password" id="pass" name="password" placeholder="Contraseña"/>
+                    <input type="password" id="pass" name="password" placeholder="Contraseña" required="required"/>
                 </div>
 
                 <div class="submit">

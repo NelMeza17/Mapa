@@ -25,11 +25,11 @@
             </div>
             <form action="login1.php" method="POST">
                 <div class="input">
-                    <input type="text" id="login" name='user' placeholder="Usuario" required/>
+                    <input type="text" id="login" name='user' placeholder="Usuario" required="required"/>
                 </div>
                 
                 <div class="input">
-                    <input type="password" id="pass" name="password" placeholder="Contraseña" required/>
+                    <input type="password" id="pass" name="password" placeholder="Contraseña" required="required"/>
                 </div>
 				<a href="<?=SITE?>datos_recuperacion.php" id="forgot_pass" class="left">Olvidaste tu contraseña ?</a>
                 <div class="submit">        	
