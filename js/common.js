@@ -152,7 +152,7 @@ $(document).ready(function(){
 		   clearForm: true,
 	       beforeSubmit: mostrarLoader, //funcion que se ejecuta antes de enviar el form
 	       error: mostrarError,
-	       success: mostrarRespuesta, //funcion que se ejecuta una vez enviado el formulario
+	       success: mostrarRespuesta //funcion que se ejecuta una vez enviado el formulario
 	    };
 		$('#form_add_producto').ajaxForm(opciones);
     });
