@@ -13,19 +13,19 @@
             <h2 style="color: white"><img src="images/locked.png" alt="" />Nuevo Usuario</h2>
             <form action="alta_user.php" method="POST">
                 <div class="input">
-                    <input type="text" id="login" name='user' placeholder=" Ingresa Usuario" required/>
+                    <input type="text" id="login" name='user' placeholder=" Ingresa Usuario" maxlength="8" required="required"/>
                 </div>
                 
                 <div class="input">
-                    <input type="password" id="pass" name="password" placeholder=" Ingresa Contraseña" required/>
+                    <input type="password" id="pass" name="password" placeholder=" Ingresa Contraseña" required="required"/>
                 </div>
 				
 				<div class="input">
-                    <input type="password" id="pass2" name='password2' placeholder="Confirmar Contraseña" required/>
+                    <input type="password" id="pass2" name='password2' placeholder="Confirmar Contraseña" required="required"/>
                 </div>
 				
 				<div class="input">
-                    <input type="email" id="email" name='email' placeholder="Ingresa e-mail" required/>
+                    <input type="email" id="email" name='email' placeholder="Ingresa e-mail" required="required"/>
                 </div>
 				
                 <div class="submit">
@@ -39,6 +39,6 @@
 <?php
 	}
 	else {
-		Redireccionauto("user/index.php");
+		Redireccionauto(USER);
 	}
 ?>

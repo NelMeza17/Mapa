@@ -6,7 +6,8 @@ define ('JS', SITE.'js/');
 define ('IMAGES', SITE.'images/');
 define ('USER', SITE.'user/');
 define ('LOGOS', IMAGES.'logos/');
-define ('ADMIN', 'root');
+//define ('ADMIN', 'root');
+define ('ADMIN', 'cm9vdA==');
 	
 function Conecta(){
 	$link=mysql_connect("localhost","root","root");
@@ -26,8 +27,8 @@ function sesion_root(){
 	$sesion=false;
 	$link = Conecta();
 	if (isset ($_SESSION['user']) && isset ($_SESSION['password']) && isset ($_SESSION['root'])){
-		if($_SESSION['root'] == ADMIN){
-			$result = mysql_query("select * from user where user='".$_SESSION['user']."' and password='".$_SESSION['password']."'", $link);		
+		if($_SESSION['root'] == ADMIN && base64_encode($_SESSION['user'])==ADMIN){
+			$result = mysql_query("select * from user where user='".base64_encode($_SESSION['user'])."' and password='".base64_encode($_SESSION['password'])."'", $link);		
 			if ($row = mysql_fetch_object($result)) {
 				$sesion=true;
 			}
@@ -41,8 +42,8 @@ function sesion(){
 	$sesion=false;
 	$link = Conecta();
 	if (isset ($_SESSION['user']) && isset ($_SESSION['password']) && isset ($_SESSION['root'])){
-		if($_SESSION['root'] != ADMIN){
-			$result = mysql_query("select * from user where user='".$_SESSION['user']."' and password='".$_SESSION['password']."'", $link);		
+		if($_SESSION['root'] != ADMIN && base64_encode($_SESSION['user'])!=ADMIN){
+			$result = mysql_query("select * from user where user='".base64_encode($_SESSION['user'])."' and password='".base64_encode($_SESSION['password'])."'", $link);		
 			if ($row = mysql_fetch_object($result)) {
 				$sesion=true;
 			}
@@ -73,6 +74,28 @@ function Alerta($mensaje){
 }
 
 function Retornauser(){
-	echo "<span style='color:white'>Hola: ".$_SESSION['user']."</span ><span style='color:white'> / </span> <a href='../logout.php'>Cerrar Sesion</a>";
+	echo "<span style='color:white'>Hola: ".$_SESSION['user']."</span >
+			<span style='color:white'> / </span> 
+			<a href='../logout.php'>Cerrar Sesion</a>";
 }
+
+function seguridad_comentarios($texto){
+	$anterior = $texto;
+	$texto	= stripslashes($texto);
+	$texto	= addslashes($texto);
+	$texto= ereg_replace(";","",$texto);
+	$texto= ereg_replace("<","",$texto);
+	$texto= ereg_replace(">","",$texto);
+	$texto= ereg_replace("/","",$texto);
+	$texto= ereg_replace(':',"",$texto);
+	$texto= str_replace("(","",$texto);
+	$texto= str_replace(")","",$texto);
+	$texto= ereg_replace("'","",$texto);
+	if($anterior != $texto){
+		return false;
+	}
+	else{
+		return true;	
+	}
+} 
 ?>

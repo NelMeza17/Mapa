@@ -37,9 +37,9 @@
 								if($count=mysql_num_rows($result)>0){
 									while($row=mysql_fetch_object($result)){
 									 echo "<tr class='modo1'>
-												<td style='width:35%'>".$row->user."</td>
-												<td style='width:35%'>".$row->password."</td>
-												<td style='width:35%'>".$row->email."</td>
+												<td style='width:35%'>".base64_decode($row->user)."</td>
+												<td style='width:35%'>".base64_decode($row->password)."</td>
+												<td style='width:35%'>".base64_decode($row->email)."</td>
 												<td class='eliminar_user_admin' title='Haz click para eliminar' style='width:10%; cursor:pointer;' rel='".$row->iduser."'><center><img src='".IMAGES."eliminar.png'/></center></td>
 											</tr>";			
 									}

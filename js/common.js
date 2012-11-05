@@ -1,5 +1,6 @@
 function coordenadas(){
-
+	latitud = position.coords.latitude; /*Guardamos nuestra latitud*/
+	longitud = position.coords.longitude; /*Guardamos nuestra longitud*/
 }
 
 function localizame() {
@@ -43,6 +44,7 @@ $(document).ready(function(){
 			success: function (data){
 				$(contenedor).css('background-color','#3B5997');
 				$(contenedor).css('border','1px solid');
+				$(contenedor).css('border-right','none');
 			    $(contenedor).css('opacity','.9');
 				$(contenedor).css('border-radius','10px');
 				$(contenedor).html(data);
@@ -148,31 +150,24 @@ $(document).ready(function(){
 	//definimos las opciones del plugin AJAX FORM
     //asignamos el plugin ajaxForm al formulario myForm y le pasamos las opciones
     $('#izquierda').on('click','#btn_add_producto',function(){
-		var opciones= {
-		   clearForm: true,
-	       beforeSubmit: mostrarLoader, //funcion que se ejecuta antes de enviar el form
-	       error: mostrarError,
-	       success: mostrarRespuesta //funcion que se ejecuta una vez enviado el formulario
-	    };
-		$('#form_add_producto').ajaxForm(opciones);
+		$('#form_add_producto').ajaxForm({
+			clearForm: true,
+			beforeSubmit: function(){$("#loader_gif").fadeIn("slow");}, //funcion que se ejecuta antes de enviar el form
+			error: function(){alert('Error inesperado');},
+			success: function(responseText){
+				$("#loader_gif").fadeOut("slow");
+				id = responseText;
+				$('#precio').val('');
+				window.alert('Producto agregado con exito!!');
+				// $('#content_ajax').css('background','none');
+				// $('#content_ajax').css('border','none');
+				// $('#content_ajax').html("");
+				url = ruta+'load/list_productos.php';
+				contenedor = '#productos_ajax';
+				execute_ajax(url,id, contenedor);
+			}
+		});
     });
-     function mostrarLoader(){
-     	$("#loader_gif").fadeIn("slow");
-     };
-     function mostrarError(){
-     	alert('Error inesperado');
-     }
-     function mostrarRespuesta (responseText){
-		$("#loader_gif").fadeOut("slow");
-		id = responseText;
-		window.alert('Producto agregado con exito!!');
-		// $('#content_ajax').css('background','none');
-		// $('#content_ajax').css('border','none');
-		// $('#content_ajax').html("");
-		url = ruta+'load/list_productos.php';
-		contenedor = '#productos_ajax';
-		execute_ajax(url,id, contenedor);
-     };
      
      $('#comentarios').on('click', 'td.eliminar_comentario', function(){
 		if(window.confirm('Esta seguro que desea eliminar este Comentario?')){
@@ -245,6 +240,41 @@ $(document).ready(function(){
 				}
 			});
 		}		
-	});
+	});
+	
+    $('#recupera_pass').on('click','#btn_recuperar',function(){
+		$('#recupera_pass').ajaxForm({
+			clearForm: true,
+			beforeSend: function(){$("#loader_gif").fadeIn("slow");},
+	        error: function (){alert('Error Inesperado');},
+	        success: function (responseText){
+	        	$("#loader_gif").fadeOut("slow");
+	        	alert(responseText);
+	        	window.location=ruta+'login.php';
+	        }
+		});
+    });
+    
+    $('#form_change_pass').on('click','#btn_change_pass',function(){
+		$('#form_change_pass').ajaxForm({
+			clearForm: true,
+			beforeSend: function(){$("#loader_gif").fadeIn("slow");},
+	        error: function (){alert('Error Inesperado');},
+	        success: function (responseText){
+	        	$("#loader_gif").fadeOut("slow");
+	        	//alert(responseText);
+	        	if(responseText=='1'){
+	        		alert('Contraseña actualizada correctamente!!');
+					window.location=ruta+'logout.php';
+				}
+				else if(responseText=='2'){
+					alert('Las nuevas contraseñas no coinciden!!');
+				}
+				else{
+					alert(responseText);	
+				}
+	        }
+		});
+    });
 });
 

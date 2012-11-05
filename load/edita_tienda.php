@@ -11,30 +11,30 @@ if(sesion()){
 		if($row = mysql_fetch_object($result))
 		{
 	?>
-	Tu imagen actual es: <img src='<?=LOGOS.$row->imagen?>'/>
+	Tu imagen actual es: <img  width='25' height='25' src='<?=LOGOS.base64_decode($row->imagen)?>'/>
 	<form id="formulario" action="<?=USER?>sube_tienda.php" method="post" enctype="multipart/form-data">
 		<input name="file" type="file" id="file" />
 		<br /><br />
 		<table>
 			<tr>
 				<td><label>Nombre:</label></td>
-				<td><input type="text" name="nombre" value='<?=$row->nombre?>' class="search" required/></td>
+				<td><input type="text" name="nombre" value='<?=base64_decode($row->nombre)?>' class="search" required/></td>
 			</tr>
 			<tr>
 				<td><label>Calle:</label></td>
-				<td><input type="text" name="calle" value='<?=$row->calle?>' class="search" required/></td>
+				<td><input type="text" name="calle" value='<?=base64_decode($row->calle)?>' class="search" required/></td>
 			</tr>
 			<tr>
 				<td><label>Numero:</label></td>
-				<td><input type="text" name="numero" value='<?=$row->numero?>' class="search" required/></td>
+				<td><input type="text" name="numero" value='<?=base64_decode($row->numero)?>' class="search" required/></td>
 			</tr>
 			<tr>
 				<td><label>Colonia:</label></td>
-				<td><input type="text" name="colonia" value='<?=$row->colonia?>' class="search" required/></td>
+				<td><input type="text" name="colonia" value='<?=base64_decode($row->colonia)?>' class="search" required/></td>
 			</tr>
 			<tr>
 				<td><label>Telefono:</label></td>
-				<td><input type="text" name="telefono" value='<?=$row->telefono?>' class="search" /></td>
+				<td><input type="text" name="telefono" value='<?=base64_decode($row->telefono)?>' class="search" /></td>
 			</tr>
 		</table>
 		<br />

@@ -6,6 +6,9 @@
 	<?php
 		require_once "../load/head.php";	 
 	?>
+	<script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCfNxWtSRLIfHhmur8iGHqyV7osTETywRg&sensor=true">
+    </script>
     <script type="text/javascript">
 	var map = null;
 	var infoWindow = null;

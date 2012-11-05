@@ -6,6 +6,11 @@
 <?php
 		// incluye el head en el html y las llamadas a metodos.
 		require_once '../load/head.php';
+?>
+	<script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCfNxWtSRLIfHhmur8iGHqyV7osTETywRg&sensor=true">
+    </script>
+<?php
 		$imagen= "../images/logos/";
 		echo "<script type='text/javascript'>
 			var map;
@@ -42,17 +47,24 @@
 				$link=Conecta();
 				$result=mysql_query("select * from tienda",$link);
 				while($row=mysql_fetch_object($result)){
-					$icon = $imagen.$row->imagen;
-					$coordenadas = $row->latitud.", ".$row->longitud;
+					$icon = $imagen.base64_decode($row->imagen);
+					$coordenadas = base64_decode($row->latitud).", ".base64_decode($row->longitud);
 					$id = $row->idtienda;
-					$infoventana="<div aling=left class=popup><img src=$icon><b><h3>".$row->nombre."</h3></b><span style=color:blue>Direccion: ".$row->calle." ".$row->numero."<br /> Colonia: ".$row->colonia."</span><br /><br /><a href=# rel=$id >Ver Productos</a></div>";
+					$infoventana="<div aling=left class=popup><img width=30 height=30 src=$icon><b><h3>".base64_decode($row->nombre)."</h3></b><span style=color:blue>Direccion: ".base64_decode($row->calle)." ".base64_decode($row->numero)."<br /> Colonia: ".base64_decode($row->colonia)."</span><br /><br /><a href=# rel=$id >Ver Productos</a></div>";
 					echo "
+						 var image = new google.maps.MarkerImage(
+	      				 	'".$icon."',
+	        				null,
+	        				null,
+	        				null,
+							new google.maps.Size(20,20)
+	    				);
 						var myLatlng = new google.maps.LatLng(".$coordenadas.");
 					    marker = new google.maps.Marker({
 							position: myLatlng, 
 							map: map, 
-							icon: '".$icon."',
-							title:'".$row->nombre."'
+							icon: image,
+							title:'".base64_decode($row->nombre)."'
 						});
 						asignaVentana(marker, '".$infoventana."');
 					";

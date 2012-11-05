@@ -24,6 +24,7 @@
 			</div>
 			<!-- En este div se carga el mapa -->	
 			<div id="comentarios">
+				<div class="change_pass right"><a href="change_pass.php">Cambiar Contraseña</a></div>
 				<center>
 					<h4>Mis Tiendas</h4>
 					<div id="table_tienda">
@@ -43,10 +44,10 @@
 								if($count=mysql_num_rows($result)>0){
 									while($row=mysql_fetch_object($result)){
 									 echo "<tr class='modo1' id='$tienda'>
-												<td style='width:25%'>".$row->nombre."</td>
-												<td style='width:25%'>".$row->calle." #".$row->numero."</td>
-												<td style='width:15%'>".$row->colonia."</td>
-												<td style='width:15%'>".$row->telefono."</td>
+												<td style='width:25%'>".base64_decode($row->nombre)."</td>
+												<td style='width:25%'>".base64_decode($row->calle)." #".base64_decode($row->numero)."</td>
+												<td style='width:15%'>".base64_decode($row->colonia)."</td>
+												<td style='width:15%'>".base64_decode($row->telefono)."</td>
 												<td class='editar_tienda' title='Haz click para editar' style='width:10%; cursor:pointer;' rel='".$row->idtienda."'><center><img src='".IMAGES."editar.png'/></center></td>
 												<td class='eliminar_tienda' title='Haz click para eliminar' style='width:10%; cursor:pointer;' rel='".$row->idtienda."'><center><img src='".IMAGES."eliminar.png'/></center></td>
 											</tr>";			
@@ -69,7 +70,7 @@
 						echo "<select name='tienda' class='tienda'>
 								<option>Selecciona una tienda</option>";
 						while($row=mysql_fetch_object($result)){
-							echo "<option value='".$row->idtienda."'>".$row->nombre."</option>";
+							echo "<option value='".$row->idtienda."'>".base64_decode($row->nombre)."</option>";
 						}
 						echo "</select>";
 					?>

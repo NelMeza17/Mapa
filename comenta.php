@@ -49,10 +49,10 @@
 								if($count= mysql_num_rows($result)>0){
 									while($row=mysql_fetch_object($result)){
 									 echo "<tr class='modo1'>
-												<td>".$row->nombre."</td>
-												<td>".$row->email."</td>
+												<td>".base64_decode($row->nombre)."</td>
+												<td>".base64_decode($row->email)."</td>
 												<td>".$row->fecha."</td>
-												<td style='width:500px'>".$row->comentario."</td>
+												<td style='width:500px'>".base64_decode($row->comentario)."</td>
 											</tr>";			
 									}
 								}
