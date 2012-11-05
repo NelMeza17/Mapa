@@ -78,19 +78,19 @@
 			  					<table>
 			  						<tr>
 			  							<td><label>Nombre:</label></td>
-			  							<td><input type="text" name="nombre" class="search" required="required"/></td>
+			  							<td><input type="text" name="nombre" class="search" maxlength="40" required="required"/></td>
 			  						</tr>
 			  						<tr>
 			  							<td><label>Calle:</label></td>
-			  							<td><input type="text" name="calle" class="search" required="required"/></td>
+			  							<td><input type="text" name="calle" class="search" maxlength="40" required="required"/></td>
 			  						</tr>
 			  						<tr>
 			  							<td><label>Numero:</label></td>
-			  							<td><input type="text" name="numero" class="search" required="required"/></td>
+			  							<td><input type="text" name="numero" class="search" maxlength="4" required="required"/></td>
 			  						</tr>
 			  						<tr>
 			  							<td><label>Colonia:</label></td>
-			  							<td><input type="text" name="colonia" class="search" required="required"/></td>
+			  							<td><input type="text" name="colonia" class="search" maxlength="40" required="required"/></td>
 			  						</tr>
 			  						<tr>
 			  							<td><label>Telefono:</label></td>

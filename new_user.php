@@ -17,11 +17,11 @@
                 </div>
                 
                 <div class="input">
-                    <input type="password" id="pass" name="password" placeholder=" Ingresa Contraseña" required="required"/>
+                    <input type="password" id="pass" name="password" placeholder=" Ingresa Contraseña" maxlength="12" required="required"/>
                 </div>
 				
 				<div class="input">
-                    <input type="password" id="pass2" name='password2' placeholder="Confirmar Contraseña" required="required"/>
+                    <input type="password" id="pass2" name='password2' placeholder="Confirmar Contraseña" maxlength="12" required="required"/>
                 </div>
 				
 				<div class="input">
