@@ -37,6 +37,6 @@
 <?php
 	}
 	else {
-		Redirecciona(ADMINISTRADOR.'dentro.php');
+		Redireccionauto(ADMINISTRADOR.'dentro.php');
 	}
 ?>
