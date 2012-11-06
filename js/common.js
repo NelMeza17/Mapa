@@ -66,7 +66,7 @@ $(document).ready(function(){
 	});
 	
 	$('#table_tienda').on('click', 'td.eliminar_tienda', function(){
-		if(window.confirm('Esta seguro que desea eliminar esta tienda?\n'+
+		if(window.confirm('Estas seguro que desea eliminar esta tienda?\n'+
 		'Tome en cuenta que al eliminar una tienda '+
 		'desapareceran todos su productos')){
 			// url = ruta+'load/elimina_tienda.php';
@@ -81,13 +81,24 @@ $(document).ready(function(){
 				error: function(){},
 				success: function (data){
 					window.alert(data);
+					$.ajax({
+						type: 'post',
+						dataType: 'html',
+						url: ruta+'load/select_tienda.php',
+						data: '',
+						beforeSend: function(){},
+						error: function(){},
+						success:function(responseText){
+							$('#select_tienda').html(responseText);	
+						}
+					});
 				}
 			});
 		}		
 	});
 	
 	$('#table_tienda').on('click', 'td.editar_tienda', function(){
-		if(window.confirm('Esta seguro que desea editar esta tienda?'))
+		if(window.confirm('Estas seguro que deseas editar esta tienda?'))
 		{
 			url = ruta+'load/edita_tienda.php';
 			datos = $(this).attr("rel");
@@ -113,7 +124,7 @@ $(document).ready(function(){
 	});
 	
 	$('#comentarios').on('click', 'td.editar_producto', function(e){
-		if(window.confirm('Esta seguro que desea editar este producto?'))
+		if(window.confirm('Estas seguro que deseas editar este producto?'))
 		{	
 			e.preventDefault();	
 			url = ruta+'load/edit_productos.php';
@@ -124,14 +135,14 @@ $(document).ready(function(){
 	});
 	
 	$('#comentarios').on('click', 'td.eliminar_producto', function(e){
-		if(window.confirm('Esta seguro que desea eliminar este producto?'))
+		if(window.confirm('Estas seguro que deseas eliminar este producto?'))
 		{	
 			e.preventDefault();	
 			url = ruta+'load/delete_producto.php';
 			id = $(this).attr("rel");
 			contenedor = '#productos_ajax';	
 			execute_ajax(url, id, contenedor);
-			window.alert('Producto eliminado con exito!!');
+			window.alert('Producto eliminado con éxito!!');
 		}
 	});
 	
@@ -156,21 +167,26 @@ $(document).ready(function(){
 			error: function(){alert('Error inesperado');},
 			success: function(responseText){
 				$("#loader_gif").fadeOut("slow");
-				id = responseText;
-				$('#precio').val('');
-				window.alert('Producto agregado con exito!!');
-				// $('#content_ajax').css('background','none');
-				// $('#content_ajax').css('border','none');
-				// $('#content_ajax').html("");
-				url = ruta+'load/list_productos.php';
-				contenedor = '#productos_ajax';
-				execute_ajax(url,id, contenedor);
+				if(responseText=='scripting'){
+					window.alert("Sus datos contiene caracteres invalidos !!");
+				}
+				else{
+					id = responseText;
+					$('#precio').val('');
+					window.alert('Producto agregado con éxito!!');
+					// $('#content_ajax').css('background','none');
+					// $('#content_ajax').css('border','none');
+					// $('#content_ajax').html("");
+					url = ruta+'load/list_productos.php';
+					contenedor = '#productos_ajax';
+					execute_ajax(url,id, contenedor);
+				}
 			}
 		});
     });
      
      $('#comentarios').on('click', 'td.eliminar_comentario', function(){
-		if(window.confirm('Esta seguro que desea eliminar este Comentario?')){
+		if(window.confirm('Estas seguro que deseas eliminar este Comentario?')){
 			$(this).parent().fadeTo(500, 0).slideUp();
 			$.ajax({
 				type: 'post',
@@ -187,7 +203,7 @@ $(document).ready(function(){
 	});
 	
 	$('#comentarios').on('click', 'td.eliminar_tienda_admin', function(){
-		if(window.confirm('Esta seguro que desea eliminar esta tienda?\n'+
+		if(window.confirm('Estas seguro que deseas eliminar esta tienda?\n'+
 		'Tome en cuenta que al eliminar una tienda '+
 		'desapareceran todos su productos')){
 			$(this).parent().fadeTo(500, 0).slideUp();
@@ -206,7 +222,7 @@ $(document).ready(function(){
 	});
 	
 	$('#comentarios').on('click', 'td.eliminar_user_admin', function(){
-		if(window.confirm('Esta seguro que desea eliminar este Usuario?\n'+
+		if(window.confirm('Estas seguro que deseas eliminar este Usuario?\n'+
 		'Tome en cuenta que al eliminar todas sus tiendas y '+
 		'desapareceran todos su productos')){
 			$(this).parent().fadeTo(500, 0).slideUp();
@@ -226,7 +242,7 @@ $(document).ready(function(){
 	
 	
 	$('#comentarios').on('click', 'td.eliminar_producto_admin', function(){
-		if(window.confirm('Esta seguro que desea eliminar este Producto?\n')){
+		if(window.confirm('Estas seguro que deseas eliminar este Producto?\n')){
 			$(this).parent().fadeTo(500, 0).slideUp();
 			$.ajax({
 				type: 'post',
@@ -272,6 +288,75 @@ $(document).ready(function(){
 				}
 				else{
 					alert(responseText);	
+				}
+	        }
+		});
+    });
+    
+    $('#form_login').on('click','#btn_login',function(){
+		$('#form_login').ajaxForm({
+			clearForm: true,
+			beforeSend: function(){$("#loader_gif").fadeIn("slow");},
+	        error: function (){alert('Error Inesperado');},
+	        success: function (responseText){
+	        	$("#loader_gif").fadeOut("slow");
+	        	//alert(responseText);
+	        	if(responseText=='1'){
+					window.location=ruta+'user/';
+				}
+				else if(responseText=='2'){
+					window.alert("Sus datos contiene caracteres invalidos !!");
+				}
+				else if(responseText=='3'){
+					window.location=ruta+'login.php?e=1';
+				}
+	        }
+		});
+    });
+    
+    $('#form_login_admin').on('click','#btn_login_admin',function(){
+		$('#form_login_admin').ajaxForm({
+			clearForm: true,
+			beforeSend: function(){$("#loader_gif").fadeIn("slow");},
+	        error: function (){alert('Error Inesperado');},
+	        success: function (responseText){
+	        	$("#loader_gif").fadeOut("slow");
+	        	//alert(responseText);
+	        	if(responseText=='1'){
+					window.location=ruta+'administrador/dentro.php';
+				}
+				else if(responseText=='2'){
+					window.alert("Sus datos contiene caracteres invalidos !!");
+				}
+				else if(responseText=='3'){
+					window.location=ruta+'administrador/index.php?e=1';
+				}
+	        }
+		});
+    });
+    
+    $('#form_new_user').on('click','#btn_new_user',function(){
+		$('#form_new_user').ajaxForm({
+			clearForm: true,
+			beforeSend: function(){$("#loader_gif").fadeIn("slow");},
+	        error: function (){alert('Error Inesperado');},
+	        success: function (responseText){
+	        	$("#loader_gif").fadeOut("slow");
+	        	if(responseText=='1'){
+					window.alert('El nombre de usuario ya existe');
+				}
+				else if(responseText=='2'){
+					window.alert('El email ya se encuentra registrado');
+				}
+				else if(responseText=='3'){
+					window.alert('Las contraseñas no coiciden');
+				}
+				else if(responseText=='4'){
+					window.alert('Usuario registrado exitosamente!!!');
+					window.location=ruta+'login.php';
+				}
+				else if(responseText=='5'){
+					window.alert("Sus datos contiene caracteres invalidos !!");
 				}
 	        }
 		});

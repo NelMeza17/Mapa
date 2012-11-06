@@ -27,9 +27,9 @@
 						<table border="0" cellpadding="0" cellspacing="0" class="tabla">
 							<tr>
 								<th>Nombre</th>
-								<th>Direccion</th>
+								<th>Direcci&oacute;n</th>
 								<th>Colonia</th>
-								<th>Telefono</th>
+								<th>Tel&eacute;fono</th>
 								<th>Eliminar</th> 
 							</tr>
 							<?php 

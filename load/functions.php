@@ -76,7 +76,7 @@ function Alerta($mensaje){
 function Retornauser(){
 	echo "<span style='color:white'>Hola: ".$_SESSION['user']."</span >
 			<span style='color:white'> / </span> 
-			<a href='../logout.php'>Cerrar Sesion</a>";
+			<a href='../logout.php'>Cerrar Sesi&oacute;n</a>";
 }
 
 function seguridad_comentarios($texto){
@@ -98,4 +98,22 @@ function seguridad_comentarios($texto){
 		return true;	
 	}
 } 
+
+function inyeccion ($texto){	
+	$anterior = $texto;
+	$texto= ereg_replace(";","",$texto);
+	$texto= ereg_replace("<","",$texto);
+	$texto= ereg_replace(">","",$texto);
+	$texto= ereg_replace("/","",$texto);
+	$texto= ereg_replace(':',"",$texto);
+	$texto= str_replace("(","",$texto);
+	$texto= str_replace(")","",$texto);
+	$texto= ereg_replace("'","",$texto);
+	if($anterior != $texto){
+		return false;
+	}
+	else{
+		return true;	
+	}
+}
 ?>

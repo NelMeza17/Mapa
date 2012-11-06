@@ -18,7 +18,7 @@
 					</div>
 			<?php } ?>
             
-            <form action="login.php" method="POST">
+            <form action="login.php" method="POST" id='form_login_admin'>
                 <div class="input">
                     <input type="text" id="login" name='user' placeholder="Usuario" required="required"/>
                 </div>
@@ -26,9 +26,9 @@
                 <div class="input">
                     <input type="password" id="pass" name="password" placeholder="Contraseña" required="required"/>
                 </div>
-
+				<center><div id="ajax_loader"><img id="loader_gif" src="<?=IMAGES?>ajax-loader.gif" style='display: none;'/></div></center>
                 <div class="submit">
-                    <input class="boton" type="submit" value="Ingresar"/>
+                    <input id='btn_login_admin' class="boton" type="submit" value="Ingresar"/>
                 </div>
             </form>     
         </div>   
@@ -37,6 +37,6 @@
 <?php
 	}
 	else {
-		header("Location: dentro.php");
+		Redirecciona(ADMINISTRADOR.'dentro.php');
 	}
 ?>

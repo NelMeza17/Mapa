@@ -31,9 +31,9 @@
 						<table border="0" cellpadding="0" cellspacing="0" class="tabla">
 							<tr>
 								<th>Nombre</th>
-								<th>Direccion</th>
+								<th>Direcci&oacute;n</th>
 								<th>Colonia</th>
-								<th>Telefono</th>
+								<th>Tel&eacute;fono</th>
 								<th>Editar</th>
 								<th>Eliminar</th> 
 							</tr>
@@ -65,15 +65,17 @@
 						</table>
 					</div>
 					<h4>Seleccionar Tienda para ver sus productos</h4>
-					<?php
-						$result=mysql_query("select idtienda, nombre from tienda where iduser='".$_SESSION['iduser']."'", $link);
-						echo "<select name='tienda' class='tienda'>
-								<option>Selecciona una tienda</option>";
-						while($row=mysql_fetch_object($result)){
-							echo "<option value='".$row->idtienda."'>".base64_decode($row->nombre)."</option>";
-						}
-						echo "</select>";
-					?>
+					<div id="select_tienda">
+						<?php
+							$result=mysql_query("select idtienda, nombre from tienda where iduser='".$_SESSION['iduser']."'", $link);
+							echo "<select name='tienda' class='tienda'>
+									<option>Selecciona una tienda</option>";
+							while($row=mysql_fetch_object($result)){
+								echo "<option value='".$row->idtienda."'>".base64_decode($row->nombre)."</option>";
+							}
+							echo "</select>";
+						?>
+					</div>
 					<br /><br />
 					<div id="productos_ajax"></div>
 				</center>

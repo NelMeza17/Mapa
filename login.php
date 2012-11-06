@@ -20,10 +20,10 @@
 			<?php } ?>
 			<div class="notif tip bloc">
                 	<strong>Hola :</strong> Aun no eres miembro de Locatienda? haz click
-                	<a href="new_user.php" class="link_notif">Aqui</a>
+                	<a href="new_user.php" class="link_notif">Aqu&iacute;</a>
                 	<a href="#" class="close"></a>
             </div>
-            <form action="login1.php" method="POST">
+            <form action="login1.php" method="POST" id='form_login'>
                 <div class="input">
                     <input type="text" id="login" name='user' placeholder="Usuario" required="required"/>
                 </div>
@@ -31,9 +31,10 @@
                 <div class="input">
                     <input type="password" id="pass" name="password" placeholder="Contraseña" required="required"/>
                 </div>
+                <center><div id="ajax_loader"><img id="loader_gif" src="<?=IMAGES?>ajax-loader.gif" style='display: none;'/></div></center>
 				<a href="<?=SITE?>datos_recuperacion.php" id="forgot_pass" class="left">Olvidaste tu contraseña ?</a>
                 <div class="submit">        	
-                    <input class="boton" type="submit" value="Ingresar"/>
+                    <input id='btn_login' class="boton" type="submit" value="Ingresar"/>
                 </div>
             </form>
             

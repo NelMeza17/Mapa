@@ -99,7 +99,7 @@ echo	"}
 					<br />
 					<center>
 					<form action='busca.php' method="post">
-						<input class="search" type="text" name="buscar" size="30" placeholder="Ingresa tu busqueda" required="required" />
+						<input class="search" type="text" name="buscar" size="30" placeholder="Ingresa tu b&uacute;squeda" required="required" />
 						<input class="boton size" type="submit" value="Buscar" />
 					</form>
 					<div id="content_ajax">

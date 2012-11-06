@@ -87,18 +87,18 @@ echo	"}
 		  		<div id="izquierda">
 		  			<a title="Inicio" href="<?=SITE?>"><div id="izquierda_banner"></div></a>
 		  			<p class="fondo_login">
-		  				<a href="login.php">Iniciar Sesion</a>	
+		  				<a href="login.php">Iniciar Sesi&oacute;n</a>	
 		  			</p>
 					<br /><br />
 					<center>
 					<form action='busca.php' method="post">
-						<input class="search" type="text" name="buscar" size="30" placeholder="Ingresa tu busqueda" required="required" />
+						<input class="search" type="text" name="buscar" size="30" placeholder="Ingresa tu b&uacute;squeda" required="required" />
 						<input class="boton size" type="submit" value="Buscar" />
 					</form>
 					<div id="content_ajax">
 					</div>
 					<br />
-					<p class="fondo_letras"><a href='comenta.php' class="comenta">Envianos tus comentarios</a></p>		  
+					<p class="fondo_letras"><a href='comenta.php' class="comenta">Env&iacute;anos tus comentarios</a></p>		  
 				</div>
 				<!-- En este div se carga el mapa -->	
 				<div id="map_canvas"></div>	  		

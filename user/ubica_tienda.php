@@ -85,7 +85,7 @@
 			  							<td><input type="text" name="calle" class="search" maxlength="40" required="required"/></td>
 			  						</tr>
 			  						<tr>
-			  							<td><label>Numero:</label></td>
+			  							<td><label>N&uacute;mero:</label></td>
 			  							<td><input type="text" name="numero" class="search" maxlength="4" required="required"/></td>
 			  						</tr>
 			  						<tr>
@@ -93,7 +93,7 @@
 			  							<td><input type="text" name="colonia" class="search" maxlength="40" required="required"/></td>
 			  						</tr>
 			  						<tr>
-			  							<td><label>Telefono:</label></td>
+			  							<td><label>Tel&eacute;fono:</label></td>
 			  							<td><input type="text" name="telefono" class="search" /></td>
 			  						</tr>
 			  					</table>
