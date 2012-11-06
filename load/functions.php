@@ -83,14 +83,14 @@ function seguridad_comentarios($texto){
 	$anterior = $texto;
 	$texto	= stripslashes($texto);
 	$texto	= addslashes($texto);
-	$texto= ereg_replace(";","",$texto);
-	$texto= ereg_replace("<","",$texto);
-	$texto= ereg_replace(">","",$texto);
-	$texto= ereg_replace("/","",$texto);
-	$texto= ereg_replace(':',"",$texto);
+	$texto= str_replace(";","",$texto);
+	$texto= str_replace("<","",$texto);
+	$texto= str_replace(">","",$texto);
+	$texto= str_replace("/","",$texto);
+	$texto= str_replace(':',"",$texto);
 	$texto= str_replace("(","",$texto);
 	$texto= str_replace(")","",$texto);
-	$texto= ereg_replace("'","",$texto);
+	$texto= str_replace("'","",$texto);
 	if($anterior != $texto){
 		return false;
 	}
@@ -101,14 +101,14 @@ function seguridad_comentarios($texto){
 
 function inyeccion ($texto){	
 	$anterior = $texto;
-	$texto= ereg_replace(";","",$texto);
-	$texto= ereg_replace("<","",$texto);
-	$texto= ereg_replace(">","",$texto);
-	$texto= ereg_replace("/","",$texto);
-	$texto= ereg_replace(':',"",$texto);
+	$texto= str_replace(";","",$texto);
+	$texto= str_replace("<","",$texto);
+	$texto= str_replace(">","",$texto);
+	$texto= str_replace("/","",$texto);
+	$texto= str_replace(':',"",$texto);
 	$texto= str_replace("(","",$texto);
 	$texto= str_replace(")","",$texto);
-	$texto= ereg_replace("'","",$texto);
+	$texto= str_replace("'","",$texto);
 	if($anterior != $texto){
 		return false;
 	}
