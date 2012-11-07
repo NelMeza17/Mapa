@@ -28,36 +28,39 @@ require("class.phpmailer.php");
 // else{
 	// echo "Fallo el envio del correo";
 // }
-$mail = new PHPMailer();
-$mail->IsSMTP();
-$mail->SMTPAuth   = true;
-//$mail->SMTPSecure = "ssl";
-$mail->Host       = "smtp.terra.com.mx";
-$mail->Port       = 587;
-$mail->Username   = 'chupas@terra.com.mx';
-$mail->Password   = "chupas12";
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-//====== DE QUIEN ES ========
-$mail->From       = "chupas@terra.com.mx";
-$mail->FromName   = "The Hack";
-//$mail->AddAttachment("images/foto.jpg", "foto_regalo.jpg"); //Archivo adjunto
-//====== PARA QUIEN =========
-$mail->Subject    = "Ha Ha";
-$mail->AddAddress("chupas@terra.com.mx","The Hack");
-$mail->AddAddress("aguila-63@hotmail.com","User");
-    
-//Cuerpo del mensaje
-$mail->Body = "Now your e-mail it's me !!! Ha Ha";
-
-if($mail->Send()){
-	for($i=0; $i<1000; $i++){
-		$mail->Send();
-	}
-	//echo "Correo Enviado correctamente";
-}
-else{
-	echo "Fallo el envio del correo";
-}
+// $mail = new PHPMailer();
+// $mail->IsSMTP();
+// $mail->SMTPAuth   = true;
+// //$mail->SMTPSecure = "ssl";
+// $mail->Host       = "smtp.gmail.com";
+// $mail->Port       = 25;
+// $mail->Username   = 'tepalcatepec123@gmail.com';
+// $mail->Password   = "tepeque123";
+// //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// //====== DE QUIEN ES ========
+// $mail->From       = "tepalcatepec123@gmail.com";
+// $mail->FromName   = "Tepalcatepec";
+// //$mail->AddAttachment("images/foto.jpg", "foto_regalo.jpg"); //Archivo adjunto
+// //====== PARA QUIEN =========
+// $mail->Subject    = "Queja Servicio Tepalcatepec";
+// $mail->AddAddress("tepalcatepec123@gmail.com");
+// $mail->AddAddress("aguila-63@hotmail.com","User");
+//     
+// //Cuerpo del mensaje
+// $mail->Body = "Por medio d este correo me gustaria dar queja hacerca de el mal servicio de prodigy que se ofrece en tepalcatepec, michoacan  ya que el mismo es una verdadera basura por que llegan momentos que ni las paginas se pueden abrir, y se hacen reportes por telefono y nunca solucionan nada solo se pierde el tiempo en pruebas inutiles, ya que con ellas no se soluciona que el servidor no de abasto";
+// 
+// if($mail->Send()){
+	// for($i=0; $i<1000; $i++){
+		// $mail->Send();
+	// }
+	// //echo "Correo Enviado correctamente";
+// }
+// else{
+	// echo "Fallo el envio del correo";
+// }
+$texto = strtolower('Cerveza');echo base64_encode($texto);
+echo "<br />";
+echo base64_encode('cerveza');
 
 // $mail = new PHPMailer();
 // $mail->IsSMTP();

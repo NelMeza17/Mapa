@@ -10,6 +10,23 @@
 	<script type="text/javascript"
       src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCfNxWtSRLIfHhmur8iGHqyV7osTETywRg&sensor=true">
     </script>
+    <script>
+	    $(function() {
+	    <?php
+	    $link = Conecta();
+		$result = mysql_query("select distinct nombre from productos",$link);
+	    echo "var availableSearch = [";
+	    while($row = mysql_fetch_object($result)){
+	    	echo "'".base64_decode($row->nombre)."',";
+	    }
+		echo "];";
+	    ?>
+	        $( "#Search" ).autocomplete({
+	        	minLength: 4,
+	            source: availableSearch
+	        });
+	    });
+	</script>
 <?php
 		$imagen= "../images/logos/";
 		echo "<script type='text/javascript'>
@@ -99,7 +116,7 @@ echo	"}
 					<br />
 					<center>
 					<form action='busca.php' method="post">
-						<input class="search" type="text" name="buscar" size="30" placeholder="Ingresa tu b&uacute;squeda" required="required" />
+						<input id='Search' class="search" type="text" name="buscar" size="30" placeholder="Ingresa tu b&uacute;squeda" required="required" />
 						<input class="boton size" type="submit" value="Buscar" />
 					</form>
 					<div id="content_ajax">
