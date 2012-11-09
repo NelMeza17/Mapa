@@ -79,6 +79,11 @@ function Retornauser(){
 			<a href='../logout.php'>Cerrar Sesi&oacute;n</a>";
 }
 
+function ValidaEspacios($valor){
+	$var=trim($valor);
+	return $var;	
+}
+
 function seguridad_comentarios($texto){
 	$anterior = $texto;
 	$texto	= stripslashes($texto);

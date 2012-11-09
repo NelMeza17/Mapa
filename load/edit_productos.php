@@ -5,7 +5,7 @@ if(sesion()){
 <div class='clear'></div>
 <fieldset class="form">
 	<center>
-	<legend>Agrega Producto</legend>
+	<legend>Editar Producto</legend>
 	<br />
 	<?php
 		$link = Conecta();

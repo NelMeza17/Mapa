@@ -1,6 +1,5 @@
 function coordenadas(){
-	latitud = position.coords.latitude; /*Guardamos nuestra latitud*/
-	longitud = position.coords.longitude; /*Guardamos nuestra longitud*/
+
 }
 
 function localizame() {
@@ -170,13 +169,16 @@ $(document).ready(function(){
 				if(responseText=='scripting'){
 					window.alert("Sus datos contiene caracteres invalidos !!");
 				}
+				else if(responseText=='error'){
+					window.alert("El o los Campos no deben estar Vacios!!");
+				}
 				else{
 					id = responseText;
 					$('#precio').val('');
 					window.alert('Producto agregado con éxito!!');
-					// $('#content_ajax').css('background','none');
-					// $('#content_ajax').css('border','none');
-					// $('#content_ajax').html("");
+					$('#content_ajax').css('background','none');
+					$('#content_ajax').css('border','none');
+					$('#content_ajax').html("");
 					url = ruta+'load/list_productos.php';
 					contenedor = '#productos_ajax';
 					execute_ajax(url,id, contenedor);
@@ -278,13 +280,15 @@ $(document).ready(function(){
 	        error: function (){alert('Error Inesperado');},
 	        success: function (responseText){
 	        	$("#loader_gif").fadeOut("slow");
-	        	//alert(responseText);
 	        	if(responseText=='1'){
 	        		alert('Contraseña actualizada correctamente!!');
 					window.location=ruta+'logout.php';
 				}
 				else if(responseText=='2'){
 					alert('Las nuevas contraseñas no coinciden!!');
+				}
+				else if(responseText=='3'){
+					alert('Ningun Campo debe estar vacio');
 				}
 				else{
 					alert(responseText);	
@@ -300,7 +304,6 @@ $(document).ready(function(){
 	        error: function (){alert('Error Inesperado');},
 	        success: function (responseText){
 	        	$("#loader_gif").fadeOut("slow");
-	        	//alert(responseText);
 	        	if(responseText=='1'){
 					window.location=ruta+'user/';
 				}
@@ -309,6 +312,9 @@ $(document).ready(function(){
 				}
 				else if(responseText=='3'){
 					window.location=ruta+'login.php?e=1';
+				}
+				else if(responseText=='4'){
+					window.alert("El Campo o los campos no debe estar Vacios");
 				}
 	        }
 		});
@@ -357,6 +363,13 @@ $(document).ready(function(){
 				}
 				else if(responseText=='5'){
 					window.alert("Sus datos contiene caracteres invalidos !!");
+				}
+				else if(responseText=='6'){
+					window.alert("El Campo o los campos no debe estar Vacios");
+				}
+				else {
+					window.alert('Error Inesperado');
+					window.location=ruta;
 				}
 	        }
 		});

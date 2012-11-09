@@ -28,6 +28,10 @@
 	    });
 	</script>
 <?php
+	if (!ValidaEspacios($_POST['buscar'])) {
+		Alerta("El Campo no debe estar Vacio");
+		RedireccionJs(ADMINISTRADOR);
+	}
 		$imagen= "../images/logos/";
 		echo "<script type='text/javascript'>
 			var map;
@@ -62,7 +66,7 @@
 				
 				//----Aqui ponemos todas las tiendas .....
 				$link=Conecta();
-				$result=mysql_query("SELECT * FROM tienda INNER JOIN productos ON tienda.idtienda = productos.idtienda WHERE productos.nombre LIKE '%".base64_encode($_POST['buscar'])."%'",$link);
+				$result=mysql_query("SELECT * FROM tienda INNER JOIN productos ON tienda.idtienda = productos.idtienda WHERE productos.nombre LIKE '%".base64_encode(ValidaEspacios($_POST['buscar']))."%'",$link);
 				while($row=mysql_fetch_object($result)){
 						$icon = $imagen.base64_decode($row->imagen);
 						$coordenadas = base64_decode($row->latitud).", ".base64_decode($row->longitud);

@@ -25,6 +25,11 @@
 	    });
 	</script>
 <?php
+	if(!ValidaEspacios($_POST['buscar'])){
+		Alerta("El Campo no debe estar Vacio");
+		RedireccionJs(SITE);
+	}
+	else{
 		$imagen= "images/logos/";
 		echo "<script type='text/javascript'>
 			var map;
@@ -53,50 +58,51 @@
 					position: pos,
 					map: map,
 					icon: mi_icono,
-					title: 'Yo'
+					title: 'Mi ubicacion'
 				});
 				";
 				
 				//----Aqui ponemos todas las tiendas .....
 				$link=Conecta();
-				$result=mysql_query("SELECT * FROM tienda INNER JOIN productos ON tienda.idtienda = productos.idtienda WHERE productos.nombre LIKE '%".base64_encode($_POST['buscar'])."%'",$link);
-				while($row=mysql_fetch_object($result)){
-						$icon = $imagen.base64_decode($row->imagen);
-						$coordenadas = base64_decode($row->latitud).", ".base64_decode($row->longitud);
-						$id = $row->idtienda;
-						$infoventana="<div aling=left class=popup><img width=30 height=30 src=$icon><b><h3>".base64_decode($row->nombre)."</h3></b><span style=color:blue>Direccion: ".base64_decode($row->calle)." ".base64_decode($row->numero)."<br /> Colonia: ".base64_decode($row->colonia)."</span><br /><br /><a href=# rel=$id >Ver Productos</a></div>";
+					$result=mysql_query("SELECT * FROM tienda INNER JOIN productos ON tienda.idtienda = productos.idtienda WHERE productos.nombre LIKE '%".base64_encode(ValidaEspacios($_POST['buscar']))."%'",$link);
+					while($row=mysql_fetch_object($result)){
+							$icon = $imagen.base64_decode($row->imagen);
+							$coordenadas = base64_decode($row->latitud).", ".base64_decode($row->longitud);
+							$id = $row->idtienda;
+							$infoventana="<div aling=left class=popup><img width=30 height=30 src=$icon><b><h3>".base64_decode($row->nombre)."</h3></b><span style=color:blue>Direccion: ".base64_decode($row->calle)." ".base64_decode($row->numero)."<br /> Colonia: ".base64_decode($row->colonia)."</span><br /><br /><a href=# rel=$id >Ver Productos</a></div>";
+						echo "
+							 var image = new google.maps.MarkerImage(
+		      				 	'".$icon."',
+		        				null,
+		        				null,
+		        				null,
+								new google.maps.Size(20,20)
+		    				);
+							var myLatlng = new google.maps.LatLng(".$coordenadas.");
+						    marker = new google.maps.Marker({
+								position: myLatlng, 
+								map: map, 
+								icon: image,
+								title:'".base64_decode($row->nombre)."'
+							});
+							asignaVentana(marker, '".$infoventana."');
+						";
+					}
 					echo "
-						 var image = new google.maps.MarkerImage(
-	      				 	'".$icon."',
-	        				null,
-	        				null,
-	        				null,
-							new google.maps.Size(20,20)
-	    				);
-						var myLatlng = new google.maps.LatLng(".$coordenadas.");
-					    marker = new google.maps.Marker({
-							position: myLatlng, 
-							map: map, 
-							icon: image,
-							title:'".base64_decode($row->nombre)."'
-						});
-						asignaVentana(marker, '".$infoventana."');
-					";
-				}
-				echo "
-				function asignaVentana(marker, informacion) {
-				  var infowindow = new google.maps.InfoWindow(
-					  { content: informacion,
-					    maxWidth: 100,
-						size: new google.maps.Size(30,30)
+					function asignaVentana(marker, informacion) {
+					  var infowindow = new google.maps.InfoWindow(
+						  { content: informacion,
+						    maxWidth: 100,
+							size: new google.maps.Size(30,30)
+						  });
+					  google.maps.event.addListener(marker, 'click', function() {
+						infowindow.open(map,marker);
 					  });
-				  google.maps.event.addListener(marker, 'click', function() {
-					infowindow.open(map,marker);
-				  });
-			    }
-				";
+				    }
+					";
 echo	"}		
 		</script>";
+	}
 ?>
 	</head>
 	<body onload="init()">

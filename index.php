@@ -89,7 +89,7 @@
 					  { content: informacion,
 					    maxWidth: 100,
 						size: new google.maps.Size(30,30)
-					  });
+					  });					  
 				  google.maps.event.addListener(marker, 'click', function() {
 					infowindow.open(map,marker);
 				  });
