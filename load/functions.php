@@ -1,15 +1,7 @@
 <?php
-define ('SITE', 'http://localhost/Mapa/');
-define ('ADMINISTRADOR', SITE.'administrador/');
-define ('CSS', SITE.'css/');
-define ('JS', SITE.'js/');
-define ('IMAGES', SITE.'images/');
-define ('USER', SITE.'user/');
-define ('LOGOS', IMAGES.'logos/');
-//define ('ADMIN', 'root');
-define ('ADMIN', 'cm9vdA==');
-	
+
 function Conecta(){
+	//Cambiar el Segundo y Tercer parametro segun la contraseña y usuario que se tenga en el servidor
 	$link=mysql_connect("localhost","root","root");
 	if(!$link){
 		echo "Error al conectar con el servidor";
@@ -21,6 +13,17 @@ function Conecta(){
 	}
 	return $link;
 }
+
+
+define ('SITE', 'http://localhost/Mapa/');
+define ('ADMINISTRADOR', SITE.'administrador/');
+define ('CSS', SITE.'css/');
+define ('JS', SITE.'js/');
+define ('IMAGES', SITE.'images/');
+define ('USER', SITE.'user/');
+define ('LOGOS', IMAGES.'logos/');
+//define ('ADMIN', 'root');
+define ('ADMIN', 'cm9vdA==');
 
 function sesion_root(){
 	@session_start();

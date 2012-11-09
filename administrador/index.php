@@ -11,13 +11,18 @@
         <div id="content" class="login">
         	<center><a title="Inicio" href="<?=SITE?>"><div id="banner"></div></a></center>	
         	<h2 style="color: white"><img src="../images/locked.png" alt="" />Panel de Administrador</h2>
-            <?php if (isset ($_GET['e'])){ ?>
+            <?php if (isset ($_GET['e']) && $_GET['e']=="1"){ ?>
 					<div class="notif error bloc">
 						<strong>Error :</strong> Usuario y/o Contraseña invalida
 						<a href="#" class="close"></a>
 					</div>
 			<?php } ?>
-            
+			<?php if (isset ($_GET['e']) && $_GET['e']=="2"){ ?>
+					<div class="notif error bloc">
+						<strong>Error :</strong> Ningun Campo debe estar Vacio
+						<a href="#" class="close"></a>
+					</div>
+			<?php } ?>
             <form action="login.php" method="POST" id='form_login_admin'>
                 <div class="input">
                     <input type="text" id="login" name='user' placeholder="Usuario" required="required"/>

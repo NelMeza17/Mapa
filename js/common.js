@@ -314,7 +314,7 @@ $(document).ready(function(){
 					window.location=ruta+'login.php?e=1';
 				}
 				else if(responseText=='4'){
-					window.alert("El Campo o los campos no debe estar Vacios");
+					window.location=ruta+'login.php?e=2';
 				}
 	        }
 		});
@@ -336,6 +336,9 @@ $(document).ready(function(){
 				}
 				else if(responseText=='3'){
 					window.location=ruta+'administrador/index.php?e=1';
+				}
+				else if(responseText=='4'){
+					window.location=ruta+'administrador/index.php?e=2';
 				}
 	        }
 		});

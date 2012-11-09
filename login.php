@@ -12,9 +12,15 @@
         <div id="content" class="login">
         	<center><a title="Inicio" href="<?=SITE?>"><div id="banner"></div></a></center>	
             <h2 style="color: white"><img src="images/locked.png" alt="" />Panel de Usuario</h2>
-            <?php if (isset ($_GET['e'])){ ?>
+            <?php if (isset ($_GET['e']) && $_GET['e']=="1"){ ?>
 					<div class="notif error bloc">
 						<strong>Error :</strong> Usuario y/o Contraseña invalida
+						<a href="#" class="close"></a>
+					</div>
+			<?php } ?>
+			<?php if (isset ($_GET['e']) && $_GET['e']=="2"){ ?>
+					<div class="notif error bloc">
+						<strong>Error :</strong> Ningun Campo debe estar Vacio
 						<a href="#" class="close"></a>
 					</div>
 			<?php } ?>

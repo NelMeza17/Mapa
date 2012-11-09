@@ -1,0 +1,25 @@
+REQUISITOS
+Conexión a Internet 
+Contar con un servidor independiente de plataforma tal como XAMPP o APPSERVER
+Navegador web, se sugiere Crhome o Mozilla FireFox
+ 
+
+INSTRUCCIONES
+1.- Descrompimir el archivo Mapa.rar en:
+		a) en "AppServ/www/"  esto en caso de contar con AppServer 
+		b) en "xampp/htdocs/"  esto en caso de contar con XAMPP
+2.- Despue de descomprimir el archivo Mapa.rar en la carpeta correspondiente abrir la carpeta Mapa/load
+3.- Abrir el Archivo functions.php con algun Editor de codigo como notepad++, aptana, etc.. 
+4.- Cambiar usuario (segundo parametro) y contraseña (tercer parametro) en la linea 5 por los datos propios y guardar los cambios
+		$link=mysql_connect("localhost","root","root");
+		$link=mysql_connect("localhost","mi_usuario","mi_contrasela");
+5.- Abrir el Navegador Web e introducir la siguiente url sin comilllas.
+		"http://localhost/Mapa/"
+6.- al abrir la pagina se le preguntara "localhost quiere utilizar la ubicacion de tu ordenador"
+		Dar click en permitir
+7.- Para entrar como administrador introducir la siguiente url sin comilllas.
+ 		"http://localhost/Mapa/administrador"
+ 		contraseña: root
+ 		user: root
+
+			

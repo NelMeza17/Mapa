@@ -15,6 +15,10 @@
 	  			</p>
 				<br />
 				<div id="botones">
+					<a href="revisa_comentarios.php"><button class="boton size140">Revisar Comentarios</button></a>
+					<a href="maneja_usuarios.php"><button class="boton size120">Manejar Usuarios</button></a><br /><br />
+					<a href="maneja_tiendas.php"><button class="boton size120">Manejar Tiendas</button></a>
+					<a href="maneja_productos.php"><button class="boton size140">Manejar Productos</button></a><br /><br />
 					<a href="<?=ADMINISTRADOR?>"><button class="boton size100">Regresar</button></a>
 				</div>
 				<br /><br /> 
