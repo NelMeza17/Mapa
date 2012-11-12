@@ -12,12 +12,18 @@ INSTRUCCIONES
 3.- Abrir el Archivo functions.php con algun Editor de codigo como notepad++, aptana, etc.. 
 4.- Cambiar usuario (segundo parametro) y contraseña (tercer parametro) en la linea 5 por los datos propios y guardar los cambios
 		$link=mysql_connect("localhost","root","root");
-		$link=mysql_connect("localhost","mi_usuario","mi_contrasela");
+		$link=mysql_connect("localhost","mi_usuario","mi_contrasela");		
 5.- Abrir el Navegador Web e introducir la siguiente url sin comilllas.
+		"http://localhost/phpmyadmin/"
+		en caso de usar appserver pide contraseña para accesar al phpmyadmin
+6.- buscar la pestaña de importar 
+7.- En el boton de"Selecciona Archivo" ir a la direccion donde se descomprimio el rar, abrir la carpeta database
+	y seleccionar el archivo locatienda.sql.
+8.- Abrir una nueva pestaña e introducir la nueva url
 		"http://localhost/Mapa/"
-6.- al abrir la pagina se le preguntara "localhost quiere utilizar la ubicacion de tu ordenador"
+9.- al abrir la pagina se le preguntara "localhost quiere utilizar la ubicacion de tu ordenador"
 		Dar click en permitir
-7.- Para entrar como administrador introducir la siguiente url sin comilllas.
+10.- Para entrar como administrador introducir la siguiente url sin comilllas.
  		"http://localhost/Mapa/administrador"
  		contraseña: root
  		user: root

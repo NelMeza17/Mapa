@@ -69,7 +69,7 @@
 		  				<p class="fondo_login">
 		  				<?php Retornauser();?> 	
 		  				</p>
-		  				<h3>Ubica tu Tienda en el mapa</h3>
+		  				<h3>Arrastra el marcador para Ubicar tu Tienda en el mapa</h3>
 		  				<fieldset class="form">
 			  				<legend>Datos tienda</legend>
 			  				<br />

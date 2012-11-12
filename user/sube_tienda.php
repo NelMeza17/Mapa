@@ -1,7 +1,7 @@
 <?php
 	include '../load/functions.php';
 	if (sesion()) {
-		if(!ValidaEspacios($_POST['nombre']) || !ValidaEspacios($_POST['calle']) || !ValidaEspacios($_POST['numero']) ||  !ValidaEspacios($_POST['colonia']) || !ValidaEspacios($_POST['telefono']) || !ValidaEspacios($_POST['latitud']) || !ValidaEspacios($_POST['longitud'])){
+		if(!ValidaEspacios($_POST['nombre']) || !ValidaEspacios($_POST['calle']) || !ValidaEspacios($_POST['numero']) ||  !ValidaEspacios($_POST['colonia']) || !ValidaEspacios($_POST['telefono']) ){
 			Alerta("El o los Campos no deben estar Vacios");
 			if($_POST['editar']=='edita'){
 				RedireccionJs(USER.'maneja_tienda.php');
@@ -29,8 +29,8 @@
 					}
 				}
 				else{
-					if (!((strpos($tipo_archivo, "gif") || strpos($tipo_archivo, "jpeg") || strpos($tipo_archivo, "png")) && ($tamano_archivo < 30720))) {
-						Alerta("La extensión o el tamaño de los archivos no es correcta. Se permiten archivos .gif o .jpg o .png de 30 Kb 	máximo");
+					if (!((strpos($tipo_archivo, "gif") || strpos($tipo_archivo, "jpeg") || strpos($tipo_archivo, "png")) && ($tamano_archivo < 307200))) {
+						Alerta("La extensión o el tamaño de los archivos no es correcta. Se permiten archivos .gif o .jpg o .png de 300 Kb 	máximo");
 					} else {
 						if (move_uploaded_file($_FILES['file']['tmp_name'], $path.$nombre_archivo)) {
 							//mysql_query($link);
@@ -51,13 +51,13 @@
 				}
 			}
 			else{
-				if(empty($_FILES['file']['name'])){
+				if(empty($_FILES['file']['name']) || !ValidaEspacios($_POST['latitud']) || !ValidaEspacios($_POST['longitud'])){
 					Alerta("El o los Campos no deben estar Vacios");
 					RedireccionJs(USER.'ubica_tienda.php');	
 				}
 				else{
-					if (!((strpos($tipo_archivo, "gif") || strpos($tipo_archivo, "jpeg") || strpos($tipo_archivo, "png")) && ($tamano_archivo < 30720))) {
-						echo "La extensión o el tamaño de los archivos no es correcta. Se permiten archivos .gif o .jpg o .png de 30 Kb 	máximo";
+					if (!((strpos($tipo_archivo, "gif") || strpos($tipo_archivo, "jpeg") || strpos($tipo_archivo, "png")) && ($tamano_archivo < 307200))) {
+						echo "La extensión o el tamaño de los archivos no es correcta. Se permiten archivos .gif o .jpg o .png de 300 Kb 	máximo";
 					} else {
 						if (move_uploaded_file($_FILES['file']['tmp_name'], $path.$nombre_archivo)) {
 							//mysql_query($link);

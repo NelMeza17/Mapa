@@ -370,6 +370,9 @@ $(document).ready(function(){
 				else if(responseText=='6'){
 					window.alert("El Campo o los campos no debe estar Vacios");
 				}
+				else if(responseText == '8'){
+					window.alert('La suma de los numeros no coinciden');
+				}
 				else {
 					window.alert('Error Inesperado');
 					window.location=ruta;
